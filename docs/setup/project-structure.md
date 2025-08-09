@@ -1,60 +1,193 @@
 # Project Structure
 
-Learn how to organize your React Native project for scalability, maintainability, and team collaboration.
+Learn how to organize your React Native project for scalability, maintainability, and team collaboration. This guide presents a **progressive approach** that starts simple and evolves as your app grows.
 
-## Recommended Project Structure
+## Architecture Evolution Strategy
+
+### **Start Simple** → **Scale Smart**
+
+1. **Small Projects (< 10 screens)**: Use **Flat Structure**
+2. **Medium Projects (10-30 screens)**: Introduce **Domain Grouping**
+3. **Large Projects (30+ screens)**: Adopt **Feature-Based Architecture**
+
+---
+
+## Phase 1: Flat Structure (Recommended Start)
+
+**Perfect for**: New projects, MVPs, small teams, learning
 
 ```
 my-app/
 ├── app/                                # App screens (Expo Router)
 │   ├── (tabs)/                         # Tab-based navigation
+│   │   ├── _layout.tsx                 # Tab layout
+│   │   ├── index.tsx                   # Home tab
+│   │   ├── search.tsx                  # Search tab
+│   │   └── profile.tsx                 # Profile tab
 │   ├── (auth)/                         # Authentication screens
+│   │   ├── _layout.tsx                 # Auth layout
+│   │   ├── login.tsx                   # Login screen
+│   │   └── register.tsx                # Register screen
+│   ├── (modals)/                       # Modal screens
+│   │   ├── camera.tsx                  # Camera modal
+│   │   └── edit-profile.tsx            # Edit profile modal
 │   ├── _layout.tsx                     # Root layout
 │   └── +not-found.tsx                  # 404 screen
 ├── components/                         # Reusable UI components
-│   ├── ui/                             # Base UI components
-│   ├── forms/                          # Form components
-│   ├── navigation/                     # Navigation components
+│   ├── ui/                             # Base UI components (Button, Input, Card)
+│   ├── forms/                          # Form components (LoginForm, RegisterForm)
+│   ├── navigation/                     # Navigation components (TabBar, Header)
 │   └── index.ts                        # Component exports
 ├── hooks/                              # Custom React hooks
-│   ├── useAuth.ts
-│   ├── useApi.ts
-│   └── index.ts
-├── lib/                                # Utility libraries
+│   ├── useAuth.ts                      # Authentication logic
+│   ├── useApi.ts                       # API requests
+│   ├── useStorage.ts                   # Local storage
+│   └── index.ts                        # Hook exports
+├── lib/                                # Utility libraries & configuration
 │   ├── api/                            # API configuration
-│   ├── auth/                           # Authentication logic
+│   │   ├── client.ts                   # HTTP client setup
+│   │   ├── endpoints.ts                # API endpoints
+│   │   └── types.ts                    # API types
+│   ├── auth/                           # Authentication utilities
+│   │   ├── storage.ts                  # Token storage
+│   │   └── types.ts                    # Auth types
 │   ├── storage/                        # Local storage utilities
+│   │   ├── mmkv.ts                     # MMKV storage
+│   │   └── secure.ts                   # Secure storage
 │   ├── utils/                          # Helper functions
+│   │   ├── cn.ts                       # Class name utility
+│   │   ├── format.ts                   # Formatting utilities
+│   │   └── validation.ts               # Validation schemas
 │   └── constants/                      # App constants
-├── styles/                             # Global styles
-│   ├── colors.ts
-│   ├── typography.ts
-│   └── spacing.ts
-├── assets/                             # Static assets
-│   ├── images/
-│   ├── icons/
-│   ├── fonts/
-│   └── animations/
-├── store/                              # State management
+│       ├── colors.ts                   # Color palette
+│       ├── spacing.ts                  # Spacing scale
+│       └── typography.ts               # Typography scale
+├── store/                              # State management (optional)
 │   ├── slices/                         # State slices
 │   ├── providers/                      # Context providers
-│   └── index.ts
+│   └── index.ts                        # Store exports
+├── assets/                             # Static assets
+│   ├── images/                         # Image files
+│   ├── icons/                          # Icon files
+│   └── fonts/                          # Custom fonts
 ├── __tests__/                          # Test files
-│   ├── components/
-│   ├── hooks/
-│   └── utils/
+│   ├── components/                     # Component tests
+│   ├── hooks/                          # Hook tests
+│   └── utils/                          # Utility tests
 ├── docs/                               # Documentation
 ├── scripts/                            # Build and utility scripts
-├── package.json
+├── package.json                        # Dependencies
 ├── .env                                # Environment variables
-├── .gitignore
-├── .nvmrc                              # Node version
 ├── app.json                            # Expo configuration
-├── tailwind.config.js                  # Tailwind configuration
-├── eslint.config.js                    # ESLint configuration
 ├── babel.config.js                     # Babel configuration
-└── tsconfig.json                       # TypeScript configuration
+├── eslint.config.js                    # ESLint configuration
+├── tsconfig.json                       # TypeScript configuration
+└── tailwind.config.js                  # Tailwind configuration (if using)
 ```
+
+### **Flat Structure Benefits**
+- **Simple to understand** and navigate
+- **Fast development** for small teams
+- **Easy refactoring** when starting out
+- **Minimal cognitive overhead**
+- **Perfect for Expo Router** file-based routing
+
+---
+
+## Phase 2: Domain Grouping (Growing Projects)
+
+**Perfect for**: 10-30 screens, multiple developers, clear feature boundaries
+
+```
+my-app/
+├── app/                                # App screens (Expo Router)
+│   ├── (tabs)/                         # Main app tabs
+│   ├── (auth)/                         # Authentication flow
+│   ├── (modals)/                       # Modal screens
+│   ├── _layout.tsx                     # Root layout
+│   └── +not-found.tsx                  # 404 screen
+├── features/                           # Feature-specific code
+│   ├── auth/                           # Authentication feature
+│   │   ├── components/                 # Auth-specific components
+│   │   ├── hooks/                      # Auth-specific hooks
+│   │   ├── services/                   # Auth API services
+│   │   └── types.ts                    # Auth types
+│   ├── profile/                        # User profile feature
+│   │   ├── components/                 # Profile components
+│   │   ├── hooks/                      # Profile hooks
+│   │   └── services/                   # Profile services
+│   └── feed/                           # Social feed feature
+│       ├── components/                 # Feed components
+│       ├── hooks/                      # Feed hooks
+│       └── services/                   # Feed services
+├── shared/                             # Shared across features
+│   ├── components/                     # Reusable UI components
+│   │   ├── ui/                         # Base components
+│   │   └── layout/                     # Layout components
+│   ├── hooks/                          # Common hooks
+│   ├── services/                       # Shared services
+│   ├── utils/                          # Utility functions
+│   └── types/                          # Global types
+├── lib/                                # Core utilities & config
+├── assets/                             # Static assets
+├── __tests__/                          # Test files
+└── [config files...]                   # Configuration files
+```
+
+### **Domain Grouping Benefits**
+- **Clear feature boundaries**
+- **Easier team collaboration**
+- **Reduced merge conflicts**
+- **Better code organization**
+- **Preparation for feature-based architecture**
+
+---
+
+## Phase 3: Feature-Based Architecture (Large Projects)
+
+**Perfect for**: 30+ screens, large teams, complex business logic
+
+```
+my-app/
+├── app/                                # App screens (Expo Router)
+├── src/                                # Source code
+│   ├── features/                       # Feature modules
+│   │   ├── auth/                       # Authentication feature
+│   │   │   ├── components/             # Auth-specific components
+│   │   │   ├── hooks/                  # Auth-specific hooks
+│   │   │   ├── services/               # Auth API services
+│   │   │   ├── store/                  # Auth state management
+│   │   │   ├── types/                  # Auth type definitions
+│   │   │   ├── utils/                  # Auth utilities
+│   │   │   └── index.ts                # Feature exports
+│   │   ├── profile/                    # User profile feature
+│   │   ├── feed/                       # Social feed feature
+│   │   ├── chat/                       # Chat feature
+│   │   └── notifications/              # Notifications feature
+│   ├── shared/                         # Shared across features
+│   │   ├── components/                 # Reusable UI components
+│   │   ├── hooks/                      # Common hooks
+│   │   ├── services/                   # Shared services
+│   │   ├── store/                      # Global state
+│   │   ├── utils/                      # Utility functions
+│   │   └── types/                      # Global types
+│   └── app/                            # App-level configuration
+│       ├── store/                      # Global state setup
+│       ├── navigation/                 # Navigation configuration
+│       └── providers/                  # App providers
+├── lib/                                # External utilities & config
+├── assets/                             # Static assets
+└── [config files...]                   # Configuration files
+```
+
+### **Feature-Based Benefits**
+- **Maximum scalability**
+- **Team independence**
+- **Clear ownership boundaries**
+- **Easier testing and maintenance**
+- **Supports micro-frontend patterns**
+
+---
 
 ## App Directory (Expo Router)
 
@@ -335,7 +468,34 @@ __tests__/
 
 ### Essential Configuration Files
 
-**TypeScript Configuration (`tsconfig.json`):**
+## Configuration Files
+
+### Path Aliases Configuration
+
+**Phase 1 & 2: Flat/Domain Structure (`tsconfig.json`):**
+
+```json
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/store/*": ["./store/*"],
+      "@/features/*": ["./features/*"],
+      "@/shared/*": ["./shared/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+**Phase 3: Feature-Based Structure (`tsconfig.json`):**
 
 ```json
 {
@@ -345,14 +505,13 @@ __tests__/
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/components/*": ["./components/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/store/*": ["./store/*"],
-      "@/styles/*": ["./styles/*"]
+      "@/features/*": ["./src/features/*"],
+      "@/shared/*": ["./src/shared/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/lib/*": ["./lib/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
   "exclude": ["node_modules"]
 }
 ```
@@ -371,12 +530,21 @@ module.exports = function (api) {
         {
           root: ['./'],
           alias: {
+            // Phase 1 & 2: Flat/Domain Structure
             '@': './',
             '@/components': './components',
             '@/hooks': './hooks',
             '@/lib': './lib',
             '@/store': './store',
-            '@/styles': './styles',
+            '@/features': './features',
+            '@/shared': './shared',
+
+            // Phase 3: Feature-Based Structure (uncomment when migrating)
+            // '@': './src',
+            // '@/features': './src/features',
+            // '@/shared': './src/shared',
+            // '@/app': './src/app',
+            // '@/lib': './lib',
           },
         },
       ],
@@ -384,6 +552,40 @@ module.exports = function (api) {
   };
 };
 ```
+
+## Migration Guide
+
+### 🔄 **Phase 1 → Phase 2 Migration**
+
+1. **Create feature directories**:
+   ```bash
+   mkdir -p features/{auth,profile,feed}
+   ```
+
+2. **Move related components**:
+   ```bash
+   # Move auth-related components
+   mv components/LoginForm features/auth/components/
+   mv hooks/useAuth.ts features/auth/hooks/
+   ```
+
+3. **Update imports** to use new paths
+4. **Create shared directory** for common components
+
+### 🔄 **Phase 2 → Phase 3 Migration**
+
+1. **Create src directory**:
+   ```bash
+   mkdir src
+   mv features src/
+   mv shared src/
+   ```
+
+2. **Update path aliases** in `tsconfig.json` and `babel.config.js`
+3. **Update all imports** to use new `@/` paths
+4. **Move app-level config** to `src/app/`
+
+---
 
 ## Best Practices
 
@@ -393,6 +595,7 @@ module.exports = function (api) {
 - **Components**: Use PascalCase (`UserProfile`)
 - **Hooks**: Use camelCase with "use" prefix (`useUserProfile`)
 - **Constants**: Use UPPER_SNAKE_CASE (`API_BASE_URL`)
+- **Features**: Use kebab-case (`user-profile`, `social-feed`)
 
 ### 2. Import Organization
 
@@ -407,6 +610,8 @@ import { useQuery } from '@tanstack/react-query';
 // 3. Internal imports (absolute paths)
 import { Button } from '@/components/ui';
 import { useAuth } from '@/hooks';
+// or for feature-based:
+import { useAuth } from '@/features/auth';
 
 // 4. Relative imports
 import './styles.css';
@@ -428,15 +633,40 @@ import './styles.css';
 - **Co-locate related files** (component, test, styles)
 - **Use index.ts files** for clean imports
 - **Group by feature**, not by file type
+- **Keep shared code truly shared**
 
-## Next Steps
+### 5. When to Migrate
 
-1. **Set up your project structure** using this template
-2. **Configure path aliases** in TypeScript and Babel
-3. **Create your first components** following the patterns
-4. **Set up state management** with your preferred solution
-5. **Add testing setup** for your components and hooks
+**Migrate to Phase 2 when**:
+- You have 10+ screens
+- Multiple developers working on different features
+- Merge conflicts become frequent
+- Components are becoming feature-specific
+
+**Migrate to Phase 3 when**:
+- You have 30+ screens
+- Large development team (5+ developers)
+- Complex business logic
+- Need clear feature ownership
 
 ---
 
-**Pro Tip**: Start with a simple structure and evolve it as your app grows. Don't over-engineer from the beginning, but plan for scalability.
+## Decision Matrix
+
+| Project Size | Team Size | Complexity | Recommended Phase |
+|--------------|-----------|------------|-------------------|
+| 1-10 screens | 1-2 devs  | Simple     | **Phase 1** (Flat) |
+| 10-30 screens| 2-5 devs  | Medium     | **Phase 2** (Domain) |
+| 30+ screens  | 5+ devs   | Complex    | **Phase 3** (Feature-based) |
+
+## Next Steps
+
+1. **Assess your current project** using the decision matrix
+2. **Choose the appropriate phase** for your project size and team
+3. **Set up path aliases** according to your chosen phase
+4. **Create your project structure** following the templates
+5. **Plan migration path** for future growth
+
+---
+
+**Pro Tip**: Start simple and evolve progressively. Each phase builds upon the previous one, making migration straightforward when the time comes.

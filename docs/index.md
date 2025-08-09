@@ -1,4 +1,4 @@
-# React Native Production Guide
+# React Native Production-Grade Hybrid App Guide
 
 Welcome to the comprehensive guide for building production-grade hybrid React Native applications. This documentation covers everything from setup to deployment, following industry best practices.
 

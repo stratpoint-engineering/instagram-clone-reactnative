@@ -71,3 +71,9 @@
 .md-nav__link--active {
   font-weight: 600;
 }
+
+.md-header__inner {
+  margin-left: 0px;
+  margin-right: auto;
+  max-width: 100%;
+}

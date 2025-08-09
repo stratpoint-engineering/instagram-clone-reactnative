@@ -1,6 +1,8 @@
 # App Architecture
 
-Learn how to design scalable, maintainable React Native applications using proven architectural patterns.
+Learn how to design scalable, maintainable React Native applications using proven architectural patterns that work with any project structure.
+
+> **Related Reading**: See [Project Structure](../setup/project-structure.md) for guidance on organizing your files and folders.
 
 ## Architecture Principles
 
@@ -23,86 +25,147 @@ Learn how to design scalable, maintainable React Native applications using prove
 - Keep components focused on a single task
 - Extract complex logic into custom hooks
 
-## Recommended Architecture Patterns
+### 4. Progressive Enhancement
 
-### 1. Feature-Based Architecture
+- Start with simple patterns and evolve as needed
+- Refactor when complexity increases, not before
+- Maintain consistency within each architectural layer
 
-```
-src/
-├── features/                           # Feature modules
-│   ├── auth/                           # Authentication feature
-│   │   ├── components/                 # Auth-specific components
-│   │   ├── hooks/                      # Auth-specific hooks
-│   │   ├── services/                   # Auth API services
-│   │   ├── types/                      # Auth type definitions
-│   │   └── index.ts                    # Feature exports
-│   ├── profile/                        # User profile feature
-│   ├── feed/                           # Social feed feature
-│   └── chat/                           # Chat feature
-├── shared/                             # Shared across features
-│   ├── components/                     # Reusable UI components
-│   ├── hooks/                          # Common hooks
-│   ├── services/                       # Shared services
-│   ├── utils/                          # Utility functions
-│   └── types/                          # Global types
-└── app/                                # App-level configuration
-    ├── store/                          # Global state
-    ├── navigation/                     # Navigation setup
-    └── providers/                      # App providers
-```
+## Architecture Patterns by Project Phase
 
-### 2. Clean Architecture Implementation
+### **Phase 1: Flat Architecture** (Small Projects)
+
+**Structure**: All code at root level (`components/`, `hooks/`, `lib/`)
+
+**Patterns**:
+- **Container/Presenter** for complex screens
+- **Custom Hooks** for business logic
+- **Service Layer** for API calls
+- **Simple State Management** (Context or Zustand)
+
+### **Phase 2: Domain Architecture** (Medium Projects)
+
+**Structure**: Feature grouping (`features/auth/`, `features/profile/`)
+
+**Patterns**:
+- **Feature Modules** with clear boundaries
+- **Shared Components** in dedicated folder
+- **Domain Services** per feature
+- **Centralized State** with feature slices
+
+### **Phase 3: Feature-Based Architecture** (Large Projects)
+
+**Structure**: Full feature isolation (`src/features/`, `src/shared/`)
+
+**Patterns**:
+- **Clean Architecture** principles
+- **Feature Independence** with minimal coupling
+- **Dependency Injection** for services
+- **Advanced State Management** with normalized data
+
+## Clean Architecture Implementation
+
+### Domain Layer - Business Entities
 
 ```typescript
-// Domain Layer - Business entities and rules
+// Domain entities (business rules)
 interface User {
   id: string;
   email: string;
   name: string;
+  avatar?: string;
 }
 
+interface Post {
+  id: string;
+  userId: string;
+  content: string;
+  createdAt: Date;
+  likes: number;
+}
+
+// Domain repositories (contracts)
 interface UserRepository {
   getUser(id: string): Promise<User>;
   updateUser(user: User): Promise<User>;
+  getUserPosts(userId: string): Promise<Post[]>;
 }
+```
 
-// Application Layer - Use cases
-class GetUserUseCase {
+### Application Layer - Use Cases
+
+```typescript
+// Use cases (application business rules)
+class GetUserProfileUseCase {
   constructor(private userRepository: UserRepository) {}
 
-  async execute(userId: string): Promise<User> {
-    return this.userRepository.getUser(userId);
+  async execute(userId: string): Promise<{user: User; posts: Post[]}> {
+    const [user, posts] = await Promise.all([
+      this.userRepository.getUser(userId),
+      this.userRepository.getUserPosts(userId)
+    ]);
+
+    return { user, posts };
   }
 }
 
-// Infrastructure Layer - External concerns
+class UpdateUserProfileUseCase {
+  constructor(private userRepository: UserRepository) {}
+
+  async execute(userId: string, updates: Partial<User>): Promise<User> {
+    const currentUser = await this.userRepository.getUser(userId);
+    const updatedUser = { ...currentUser, ...updates };
+    return this.userRepository.updateUser(updatedUser);
+  }
+}
+```
+
+### Infrastructure Layer - External Concerns
+
+```typescript
+// Infrastructure (external services)
 class ApiUserRepository implements UserRepository {
+  constructor(private apiClient: ApiClient) {}
+
   async getUser(id: string): Promise<User> {
-    const response = await fetch(`/api/users/${id}`);
-    return response.json();
+    return this.apiClient.get(`/users/${id}`);
   }
 
   async updateUser(user: User): Promise<User> {
-    const response = await fetch(`/api/users/${user.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(user),
-    });
-    return response.json();
+    return this.apiClient.put(`/users/${user.id}`, user);
+  }
+
+  async getUserPosts(userId: string): Promise<Post[]> {
+    return this.apiClient.get(`/users/${userId}/posts`);
   }
 }
+```
 
-// Presentation Layer - React components
+### Presentation Layer - React Components
+
+```typescript
+// Presentation (UI components)
 function UserProfile({ userId }: { userId: string }) {
-  const { data: user, isLoading } = useUser(userId);
+  const { data, isLoading, error } = useUserProfile(userId);
 
   if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!data) return <NotFound />;
 
   return (
     <View>
-      <Text>{user?.name}</Text>
-      <Text>{user?.email}</Text>
+      <UserHeader user={data.user} />
+      <PostList posts={data.posts} />
     </View>
   );
+}
+
+// Custom hook (application layer interface)
+function useUserProfile(userId: string) {
+  return useQuery({
+    queryKey: ['userProfile', userId],
+    queryFn: () => getUserProfileUseCase.execute(userId),
+  });
 }
 ```
 
@@ -476,6 +539,52 @@ export function useUserService() {
 }
 ```
 
+## Architecture Evolution Strategy
+
+### **Start Simple → Scale Smart**
+
+```typescript
+// Phase 1: Simple Hook (Flat Structure)
+function useAuth() {
+  const [user, setUser] = useState<User | null>(null);
+
+  const login = async (email: string, password: string) => {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+    const user = await response.json();
+    setUser(user);
+  };
+
+  return { user, login };
+}
+
+// Phase 2: Service Layer (Domain Structure)
+function useAuth() {
+  const [user, setUser] = useState<User | null>(null);
+
+  const login = async (email: string, password: string) => {
+    const user = await authService.login(email, password);
+    setUser(user);
+  };
+
+  return { user, login };
+}
+
+// Phase 3: Use Cases (Feature-Based Structure)
+function useAuth() {
+  const [user, setUser] = useState<User | null>(null);
+
+  const login = async (email: string, password: string) => {
+    const user = await loginUseCase.execute(email, password);
+    setUser(user);
+  };
+
+  return { user, login };
+}
+```
+
 ## Best Practices
 
 ### 1. Keep Components Pure
@@ -508,16 +617,6 @@ function UserProfile({ userId }: { userId: string }) {
 class BaseButton extends Component {
   render() {
     return <Pressable>{this.props.children}</Pressable>;
-  }
-}
-
-class PrimaryButton extends BaseButton {
-  render() {
-    return (
-      <Pressable style={{ backgroundColor: 'blue' }}>
-        {this.props.children}
-      </Pressable>
-    );
   }
 }
 
@@ -555,7 +654,7 @@ interface Repository<T extends { id: string }> {
   delete(id: string): Promise<void>;
 }
 
-// Use discriminated unions
+// Use discriminated unions for state
 type LoadingState =
   | { status: 'idle' }
   | { status: 'loading' }
@@ -563,14 +662,28 @@ type LoadingState =
   | { status: 'error'; error: string };
 ```
 
+### 4. Progressive Refactoring
+
+```typescript
+// Start simple, refactor when needed
+// Phase 1: Direct API calls
+const user = await fetch('/api/user').then(r => r.json());
+
+// Phase 2: Service layer
+const user = await userService.getUser();
+
+// Phase 3: Use cases with dependency injection
+const user = await container.resolve('getUserUseCase').execute();
+```
+
 ## Next Steps
 
-1. **Choose your architecture pattern** based on app complexity
-2. **Set up your service layer** for API communication
-3. **Implement custom hooks** for business logic
-4. **Create reusable components** following design patterns
-5. **Add proper TypeScript types** for better developer experience
+1. **Assess your current project phase** using the [Project Structure guide](../setup/project-structure.md)
+2. **Choose appropriate patterns** for your project size and complexity
+3. **Implement progressive architecture** starting simple
+4. **Plan for evolution** as your app grows
+5. **Maintain consistency** within each architectural layer
 
 ---
 
-**Pro Tip**: Start simple and refactor as your app grows. Don't over-architect early, but plan for scalability from the beginning.
+**Pro Tip**: Architecture should serve your team and project, not the other way around. Start with what works and evolve when complexity demands it.

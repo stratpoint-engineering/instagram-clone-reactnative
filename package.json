@@ -54,6 +54,7 @@
     "@babel/core": "^7.25.2",
     "@expo/ngrok": "^4.1.0",
     "@types/react": "~19.0.10",
+    "babel-plugin-module-resolver": "^5.0.2",
     "prettier": "^3.6.2",
     "typescript": "~5.8.3"
   },
