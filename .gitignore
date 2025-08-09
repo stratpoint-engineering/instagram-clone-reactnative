@@ -153,3 +153,7 @@ ios/Flipper/
 # Deployment
 .vercel
 .netlify
+
+# MkDocs
+site/
+

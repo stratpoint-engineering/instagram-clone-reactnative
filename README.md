@@ -427,6 +427,53 @@ git commit -m "Add native code to version control"
 3. **Native Code Ownership**: Take control of iOS/Android projects
 4. **CI/CD Setup**: Configure builds without EAS (optional)
 
+## 📚 Documentation
+
+This project includes comprehensive documentation built with MkDocs Material.
+
+### View Documentation
+```bash
+# Serve documentation locally
+npm run docs:serve
+# or
+mkdocs serve
+
+# Open http://127.0.0.1:8000 in your browser
+```
+
+### Build Documentation
+```bash
+# Build static documentation
+npm run docs:build
+# or
+mkdocs build
+
+# Deploy to GitHub Pages
+npm run docs:deploy
+# or
+mkdocs gh-deploy
+```
+
+### Format Documentation
+```bash
+# Format all documentation files
+npm run format:docs
+
+# Check formatting
+npm run format:check
+```
+
+### Documentation Structure
+- **Getting Started**: Environment setup, project structure, package management
+- **Architecture**: App architecture, state management, navigation, component design
+- **UI Development**: Styling systems, design systems, responsive design, animations
+- **Native Integration**: Expo vs Pure RN, native modules, platform-specific code
+- **Development Tools**: Debugging, testing, code quality, performance
+- **Data & Networking**: API integration, state synchronization
+- **Security**: Authentication, API security, data security
+- **Deployment**: CI/CD, app store deployment
+- **Monitoring**: Crash reporting, analytics, performance monitoring
+
 ## 🔧 Development Commands
 
 ### Package Manager Commands

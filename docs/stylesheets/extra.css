@@ -1,0 +1,73 @@
+/* Full page width layout */
+.md-main__inner {
+  max-width: none;
+}
+
+.md-content {
+  max-width: none;
+}
+
+.md-content__inner {
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 76.25em) {
+  .md-content__inner {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 3rem;
+  }
+}
+
+/* Better code block styling for full width */
+.highlight {
+  margin: 1em 0;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  text-align: center;
+  margin: 2em 0;
+}
+
+/* Table responsiveness */
+.md-typeset table:not([class]) {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: 0.6em 1em;
+}
+
+/* Better spacing for content */
+.md-typeset h1 {
+  margin-top: 0;
+}
+
+.md-typeset h2 {
+  margin-top: 2em;
+}
+
+.md-typeset h3 {
+  margin-top: 1.5em;
+}
+
+/* Code block improvements */
+.md-typeset .highlight pre {
+  padding: 1em;
+  border-radius: 0.3em;
+}
+
+/* Navigation improvements */
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 500;
+}
+
+.md-nav__link--active {
+  font-weight: 600;
+}

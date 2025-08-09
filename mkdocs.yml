@@ -1,0 +1,118 @@
+site_name: React Native Developer Guide
+site_description: Comprehensive guide for building production-grade hybrid React Native applications
+site_author: React Native Development Team
+site_url: https://your-domain.com
+
+repo_name: rcdelacruz/instagram-clone-reactnative
+repo_url: https://github.com/rcdelacruz/instagram-clone-reactnative
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  font:
+    text: Work Sans
+    code: JetBrains Mono
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.tilde
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Environment Setup: setup/environment-setup.md
+    - Project Structure: setup/project-structure.md
+    - Package Management: setup/package-management.md
+  - Architecture:
+    - App Architecture: architecture/app-architecture.md
+    - State Management: architecture/state-management.md
+    - Navigation: architecture/navigation.md
+    - Component Design: architecture/component-design.md
+  - UI Development:
+    - Styling Systems: ui/styling-systems.md
+    - Design Systems: ui/design-systems.md
+    - Responsive Design: ui/responsive-design.md
+    - Animations: ui/animations.md
+  - Native Integration:
+    - Expo vs Pure RN: native/expo-vs-pure-rn.md
+    - Native Modules: native/native-modules.md
+    - Platform Specific: native/platform-specific.md
+    - Permissions: native/permissions.md
+  - Development Tools:
+    - Debugging: tools/debugging.md
+    - Testing: tools/testing.md
+    - Code Quality: tools/code-quality.md
+    - Performance: tools/performance.md
+  - Data & Networking:
+    - API Integration: data/api-integration.md
+    - State Synchronization: data/state-sync.md
+  - Security:
+    - Authentication: security/authentication.md
+  - Deployment:
+    - CI/CD: deployment/cicd.md
+  - Monitoring:
+    - Crash Reporting: monitoring/crash-reporting.md
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+  - javascripts/mermaid.js
+
+extra:
+  generator: false
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rcdelacruz/rork-app
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/your-handle
+
+copyright: Copyright &copy; 2024 React Native Development Team
