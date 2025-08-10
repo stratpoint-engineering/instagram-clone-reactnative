@@ -13,10 +13,10 @@ A React Native Instagram clone demonstrating **Phase 1 flat structure architectu
 ```bash
 # Clone and install
 git checkout phase-1-flat-structure
-npm install
+bun install
 
 # Start development server
-npm start
+bun start
 
 # Open in browser
 # Main app: http://localhost:8084
@@ -57,23 +57,20 @@ node --version  # Should be v18+
 node --version  # Should be v18+
 ```
 
-**Choose one package manager:**
+**Package Manager (Bun - Used in this project):**
 
-# Option A: Bun (fastest, used in this project)
+```bash
+# Install Bun (fastest package manager)
 curl -fsSL https://bun.sh/install | bash
 # Or via npm: npm install -g bun
+
+# Verify installation
 bun --version
 
-# Option B: npm (comes with Node.js)
-npm --version
-
-# Option C: Yarn
-npm install -g yarn
-yarn --version
-
-# Option D: pnpm
-npm install -g pnpm
-pnpm --version
+# Alternative package managers (if preferred):
+# npm --version    # Comes with Node.js
+# yarn --version   # Install: npm install -g yarn
+# pnpm --version   # Install: npm install -g pnpm
 ```
 
 #### 2. React Native Development Environment
@@ -188,20 +185,16 @@ npm install -g @expo/eas-cli
 git clone <your-repo>
 cd rork-app
 
-# Install dependencies (choose your package manager)
-bun install      # Bun (fastest)
-# OR
-npm install      # npm
-# OR
-yarn install     # Yarn
-# OR
-pnpm install     # pnpm
+# Install dependencies (using Bun - this project's package manager)
+bun install
 
-# Verify Expo setup (adjust based on package manager)
-bunx expo doctor  # Bun
-npx expo doctor   # npm
-yarn expo doctor  # Yarn
-pnpm expo doctor  # pnpm
+# Verify Expo setup
+bunx expo doctor
+
+# Alternative commands for other package managers:
+# npm install && npx expo doctor
+# yarn install && yarn expo doctor
+# pnpm install && pnpm expo doctor
 ```
 
 ### Common Setup Issues & Solutions
@@ -261,7 +254,7 @@ sudo xcode-select --reset
 xcode-select --install
 ```
 
-## �📋 What We Accomplished
+## 📋 What We Accomplished
 
 ### ✅ Current Working Setup
 - **Web Version**: Running successfully at `http://localhost:8083`
@@ -320,11 +313,11 @@ bunx expo start
 
 ### Option 1: Web Development (Currently Working)
 ```bash
-# Start the development server (choose your package manager)
-bunx expo start   # Bun
-npx expo start    # npm
-yarn expo start   # Yarn
-pnpm expo start   # pnpm
+# Start the development server (using Bun)
+bun start
+
+# Alternative commands:
+# npm start, yarn start, or pnpm start
 
 # Open in browser
 # Navigate to http://localhost:8083
@@ -573,10 +566,10 @@ Choose your preferred package manager and use the corresponding commands:
 bun install
 
 # Start development server
-bunx expo start
+bun start
 
 # Web development
-bunx expo start --web
+bun start --web
 
 # Generate native code
 bunx expo prebuild
@@ -589,7 +582,9 @@ bunx expo run:ios
 bunx expo run:android
 ```
 
-#### npm (Default with Node.js)
+#### Alternative Package Managers
+
+**npm (Default with Node.js)**
 ```bash
 # Install dependencies
 npm install
@@ -657,12 +652,13 @@ pnpm expo run:android
 
 ## 📝 Technical Notes
 
+- **Package Manager**: **Bun** (fastest JavaScript runtime and package manager)
 - **Architecture**: Phase 1 flat structure with organized subdirectories
 - **Hybrid Approach**: Custom components replace Expo modules for vendor independence
-- **Package Manager**: Bun for faster installs and development
 - **TypeScript**: Strict type checking with path aliases configured
 - **Path Aliases**: Clean imports using `@/components`, `@/hooks`, `@/lib`
 - **Web Compatibility**: All custom components work on web platform
+- **Development**: Fast installs and hot reload with Bun
 - **ESLint**: Code quality rules for React Native and TypeScript
 - **Git**: Comprehensive `.gitignore` with tasks/ folder excluded
 
