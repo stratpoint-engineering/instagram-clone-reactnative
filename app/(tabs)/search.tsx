@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, StyleSheet, TextInput, ScrollView, TouchableOpacity, Dimensions, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from 'expo-image';
 import { Search as SearchIcon } from 'lucide-react-native';
 
 import { useSearch } from '@/hooks/useSearch';

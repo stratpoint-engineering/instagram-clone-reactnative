@@ -1,9 +1,9 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from 'expo-image';
 import { Settings, Grid, UserCheck } from 'lucide-react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+
+import LinearGradient from '@/components/LinearGradient';
 
 import { useProfile } from '@/hooks/useProfile';
 

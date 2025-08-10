@@ -1,8 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { Image } from 'expo-image';
-import { LinearGradient } from 'expo-linear-gradient';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { Plus } from 'lucide-react-native';
+
+import LinearGradient from '@/components/LinearGradient';
 
 interface Story {
   id: string;

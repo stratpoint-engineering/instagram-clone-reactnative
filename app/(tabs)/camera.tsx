@@ -1,49 +1,35 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from 'expo-image';
-import * as ImagePicker from 'expo-image-picker';
 import { Camera, Image as ImageIcon } from 'lucide-react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+
+import ImagePicker from '@/components/ImagePicker';
+import LinearGradient from '@/components/LinearGradient';
 
 export default function CameraScreen() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const pickImage = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
-    if (status !== 'granted') {
-      Alert.alert('Permission needed', 'We need camera roll permissions to select photos.');
-      return;
-    }
-
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: 'Images',
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
     });
 
-    if (!result.canceled) {
+    if (!result.canceled && result.assets) {
       setSelectedImage(result.assets[0].uri);
     }
   };
 
   const takePhoto = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    
-    if (status !== 'granted') {
-      Alert.alert('Permission needed', 'We need camera permissions to take photos.');
-      return;
-    }
-
     const result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
     });
 
-    if (!result.canceled) {
+    if (!result.canceled && result.assets) {
       setSelectedImage(result.assets[0].uri);
     }
   };
@@ -64,7 +50,7 @@ export default function CameraScreen() {
       <View style={styles.content}>
         {selectedImage ? (
           <View style={styles.imageContainer}>
-            <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
+            <Image source={{ uri: selectedImage }} style={styles.selectedImage} resizeMode="cover" />
             <View style={styles.actions}>
               <TouchableOpacity style={styles.actionButton} onPress={() => setSelectedImage(null)}>
                 <Text style={styles.actionButtonText}>Choose Different</Text>

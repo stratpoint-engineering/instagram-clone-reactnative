@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Dimensions } from 'react-native';
-import { Image } from 'expo-image';
+import { View, StyleSheet, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
 import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from 'lucide-react-native';
 
 const { width } = Dimensions.get('window');

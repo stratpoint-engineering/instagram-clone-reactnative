@@ -157,3 +157,5 @@ ios/Flipper/
 # MkDocs
 site/
 
+# Project Tasks (local development)
+tasks/

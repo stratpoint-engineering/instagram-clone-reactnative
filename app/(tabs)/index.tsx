@@ -2,11 +2,11 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Heart, MessageCircle } from 'lucide-react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { useFeed } from '@/hooks/useFeed';
 import StoriesSection from '@/components/StoriesSection';
 import PostCard from '@/components/PostCard';
+import LinearGradient from '@/components/LinearGradient';
 
 
 
