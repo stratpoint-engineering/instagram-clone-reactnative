@@ -3,17 +3,16 @@ import { ScrollView, StyleSheet, View, Text, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Phase 1 imports - demonstrating flat structure organization
-import { Button, Input, Card } from '@/components/ui';
-import { LoginForm } from '@/components/forms';
+import { Button, Input, Card, LoginForm } from '@/components';
 import { useApi, useLocalStorage } from '@/hooks';
 import { colors } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 /**
  * Phase 1 Demo Screen
- * 
+ *
  * This screen demonstrates the Phase 1 flat structure approach:
- * 
+ *
  * 📁 Project Structure:
  * ├── components/
  * │   ├── ui/           # Reusable UI components
@@ -24,7 +23,7 @@ import { cn } from '@/lib/utils';
  * │   ├── constants/    # App constants (colors, spacing, etc.)
  * │   └── utils/        # Helper functions
  * └── app/              # Screens (Expo Router)
- * 
+ *
  * 🎯 Benefits:
  * - Simple to understand and navigate
  * - Fast development for small teams
@@ -67,16 +66,16 @@ export default function Phase1DemoScreen() {
           <Text style={styles.sectionDescription}>
             Reusable components from @/components/ui
           </Text>
-          
+
           <View style={styles.componentDemo}>
             <Button variant="primary" onPress={() => Alert.alert('Primary Button')}>
               Primary Button
             </Button>
-            
+
             <Button variant="outline" onPress={() => Alert.alert('Outline Button')}>
               Outline Button
             </Button>
-            
+
             <Input
               label="Demo Input"
               placeholder="Type something..."
@@ -92,14 +91,14 @@ export default function Phase1DemoScreen() {
           <Text style={styles.sectionDescription}>
             Business logic from @/hooks
           </Text>
-          
+
           <View style={styles.hookDemo}>
             <Text style={styles.hookLabel}>Local Storage Hook:</Text>
             <Text style={styles.hookValue}>{storedValue || 'No value stored'}</Text>
             <Button size="sm" onPress={handleStorageTest}>
               Test Storage
             </Button>
-            
+
             <Text style={styles.hookLabel}>API Hook:</Text>
             <Text style={styles.hookValue}>
               {isLoading ? 'Loading...' : apiData ? JSON.stringify(apiData) : 'No data'}
@@ -116,7 +115,7 @@ export default function Phase1DemoScreen() {
           <Text style={styles.sectionDescription}>
             Complex components from @/components/forms
           </Text>
-          
+
           <LoginForm onLogin={handleLogin} />
         </Card>
 

@@ -39,7 +39,7 @@ export default function PostCard({ post }: PostCardProps) {
       </View>
 
       {/* Image */}
-      <Image source={{ uri: post.image }} style={styles.postImage} contentFit="cover" />
+      <Image source={{ uri: post.image }} style={styles.postImage} resizeMode="cover" />
 
       {/* Actions */}
       <View style={styles.actions}>
