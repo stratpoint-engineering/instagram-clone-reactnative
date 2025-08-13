@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { TextInput, TextInputProps, View, Text, ViewStyle, TextStyle } from 'react-native';
+import { TextInput, TextInputProps, View, Text, ViewStyle, TextStyle, TouchableOpacity } from 'react-native';
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -7,12 +7,14 @@ interface InputProps extends TextInputProps {
   containerStyle?: ViewStyle;
   labelStyle?: TextStyle;
   errorStyle?: TextStyle;
+  rightIcon?: string;
+  onRightIconPress?: () => void;
 }
 
 /**
  * Reusable Input component following Phase 1 flat structure
  * Located in: components/ui/Input.tsx
- * 
+ *
  * Usage:
  * import { Input } from '@/components/ui';
  * <Input label="Email" placeholder="Enter your email" error={errors.email} />
@@ -24,6 +26,8 @@ export const Input = forwardRef<TextInput, InputProps>(({
   containerStyle,
   labelStyle,
   errorStyle,
+  rightIcon,
+  onRightIconPress,
   ...props
 }, ref) => {
   const getInputStyle = (): TextStyle => {
@@ -89,12 +93,32 @@ export const Input = forwardRef<TextInput, InputProps>(({
           {label}
         </Text>
       )}
-      <TextInput
-        ref={ref}
-        style={getInputStyle()}
-        placeholderTextColor="#8E8E93"
-        {...props}
-      />
+      <View style={{ position: 'relative' }}>
+        <TextInput
+          ref={ref}
+          style={[getInputStyle(), rightIcon && { paddingRight: 50 }]}
+          placeholderTextColor="#8E8E93"
+          {...props}
+        />
+        {rightIcon && (
+          <TouchableOpacity
+            onPress={onRightIconPress}
+            style={{
+              position: 'absolute',
+              right: 16,
+              top: 0,
+              bottom: 0,
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: 24,
+            }}
+          >
+            <Text style={{ fontSize: 16, color: '#8E8E93' }}>
+              {rightIcon === 'eye' ? '👁️' : rightIcon === 'eye-off' ? '🙈' : rightIcon === 'loading' ? '⏳' : rightIcon}
+            </Text>
+          </TouchableOpacity>
+        )}
+      </View>
       {error && (
         <Text style={getErrorStyle()}>
           {error}

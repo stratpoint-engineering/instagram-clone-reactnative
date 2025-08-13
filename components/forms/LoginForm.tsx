@@ -1,34 +1,67 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Alert } from 'react-native';
-
+import { useAuth } from '@/hooks';
 import { Button, Input } from '@/components/ui';
 
 interface LoginFormProps {
   onLogin?: (email: string, password: string) => void;
+  onSuccess?: () => void;
+  onSignUpPress?: () => void;
+  onForgotPasswordPress?: () => void;
 }
 
 /**
- * LoginForm component following Phase 1 flat structure
+ * LoginForm component with Supabase authentication integration
  * Located in: components/forms/LoginForm.tsx
- * 
- * Demonstrates:
- * - Form-specific component organization
- * - Using UI components from @/components/ui
- * - State management within component
- * - Validation patterns
- * 
+ *
+ * Features:
+ * - Supabase authentication integration
+ * - Form validation
+ * - Loading states and error handling
+ * - Password visibility toggle
+ * - Links to sign up and forgot password
+ *
  * Usage:
  * import { LoginForm } from '@/components/forms';
- * <LoginForm onLogin={handleLogin} />
+ * <LoginForm onSuccess={() => router.push('/(tabs)')} />
  */
-export function LoginForm({ onLogin }: LoginFormProps) {
+export function LoginForm({ onLogin, onSuccess, onSignUpPress, onForgotPasswordPress }: LoginFormProps) {
+  const { login, isLoading, error, clearError } = useAuth();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<{ email?: string; password?: string; general?: string }>({});
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Update field and clear errors
+  const updateEmail = (value: string) => {
+    setEmail(value);
+    if (errors.email) {
+      setErrors(prev => ({ ...prev, email: undefined }));
+    }
+    if (errors.general) {
+      setErrors(prev => ({ ...prev, general: undefined }));
+    }
+    if (error) {
+      clearError();
+    }
+  };
+
+  const updatePassword = (value: string) => {
+    setPassword(value);
+    if (errors.password) {
+      setErrors(prev => ({ ...prev, password: undefined }));
+    }
+    if (errors.general) {
+      setErrors(prev => ({ ...prev, general: undefined }));
+    }
+    if (error) {
+      clearError();
+    }
+  };
 
   const validateForm = () => {
-    const newErrors: { email?: string; password?: string } = {};
+    const newErrors: { email?: string; password?: string; general?: string } = {};
 
     if (!email) {
       newErrors.email = 'Email is required';
@@ -49,25 +82,37 @@ export function LoginForm({ onLogin }: LoginFormProps) {
   const handleSubmit = async () => {
     if (!validateForm()) return;
 
-    setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
       if (onLogin) {
+        // Use custom handler if provided
         onLogin(email, password);
       } else {
-        Alert.alert('Success', 'Login successful!');
+        // Use built-in auth
+        const result = await login({
+          email: email.trim(),
+          password,
+        });
+
+        if (result.success) {
+          Alert.alert(
+            'Welcome Back!',
+            'You have been logged in successfully.',
+            [{ text: 'OK', onPress: onSuccess }]
+          );
+
+          // Reset form
+          setEmail('');
+          setPassword('');
+          setErrors({});
+
+          if (onSuccess) {
+            onSuccess();
+          }
+        }
       }
-      
-      // Reset form
-      setEmail('');
-      setPassword('');
-      setErrors({});
     } catch (error) {
-      Alert.alert('Error', 'Login failed. Please try again.');
-    } finally {
-      setIsLoading(false);
+      console.error('Login error:', error);
+      setErrors({ general: 'An unexpected error occurred. Please try again.' });
     }
   };
 
@@ -77,11 +122,18 @@ export function LoginForm({ onLogin }: LoginFormProps) {
       <Text style={styles.subtitle}>Sign in to your account</Text>
 
       <View style={styles.form}>
+        {/* General Error */}
+        {(errors.general || error) && (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>{errors.general || error}</Text>
+          </View>
+        )}
+
         <Input
           label="Email"
           placeholder="Enter your email"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={updateEmail}
           error={errors.email}
           keyboardType="email-address"
           autoCapitalize="none"
@@ -92,11 +144,26 @@ export function LoginForm({ onLogin }: LoginFormProps) {
           label="Password"
           placeholder="Enter your password"
           value={password}
-          onChangeText={setPassword}
+          onChangeText={updatePassword}
           error={errors.password}
-          secureTextEntry
+          secureTextEntry={!showPassword}
           autoComplete="password"
+          rightIcon={showPassword ? 'eye-off' : 'eye'}
+          onRightIconPress={() => setShowPassword(!showPassword)}
         />
+
+        {/* Forgot Password Link */}
+        {onForgotPasswordPress && (
+          <View style={styles.forgotPasswordContainer}>
+            <Button
+              variant="link"
+              onPress={onForgotPasswordPress}
+              style={styles.forgotPasswordButton}
+            >
+              Forgot Password?
+            </Button>
+          </View>
+        )}
 
         <Button
           onPress={handleSubmit}
@@ -105,6 +172,20 @@ export function LoginForm({ onLogin }: LoginFormProps) {
         >
           {isLoading ? 'Signing In...' : 'Sign In'}
         </Button>
+
+        {/* Sign Up Link */}
+        {onSignUpPress && (
+          <View style={styles.signUpContainer}>
+            <Text style={styles.signUpText}>Don't have an account? </Text>
+            <Button
+              variant="link"
+              onPress={onSignUpPress}
+              style={styles.signUpButton}
+            >
+              Sign Up
+            </Button>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -130,8 +211,40 @@ const styles = StyleSheet.create({
   form: {
     gap: 16,
   },
+  errorContainer: {
+    backgroundColor: '#FEF2F2',
+    borderColor: '#FECACA',
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 16,
+  },
+  errorText: {
+    color: '#DC2626',
+    fontSize: 14,
+    textAlign: 'center',
+  },
+  forgotPasswordContainer: {
+    alignItems: 'flex-end',
+    marginBottom: 24,
+  },
+  forgotPasswordButton: {
+    paddingHorizontal: 0,
+  },
   submitButton: {
-    marginTop: 8,
+    marginBottom: 24,
+  },
+  signUpContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  signUpText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  signUpButton: {
+    paddingHorizontal: 0,
   },
 });
 

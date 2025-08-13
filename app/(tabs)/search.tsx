@@ -38,7 +38,7 @@ export default function SearchScreen() {
               <Image
                 source={{ uri: post.image }}
                 style={styles.gridImage}
-                contentFit="cover"
+                resizeMode="cover"
               />
             </TouchableOpacity>
           ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text, PressableProps, ViewStyle, TextStyle } from 'react-native';
 
 interface ButtonProps extends PressableProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   style?: ViewStyle;
@@ -12,7 +12,7 @@ interface ButtonProps extends PressableProps {
 /**
  * Reusable Button component following Phase 1 flat structure
  * Located in: components/ui/Button.tsx
- * 
+ *
  * Usage:
  * import { Button } from '@/components/ui';
  * <Button variant="primary" size="md" onPress={handlePress}>Click me</Button>
@@ -47,6 +47,7 @@ export function Button({
       secondary: { backgroundColor: '#8E8E93' },
       outline: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#007AFF' },
       ghost: { backgroundColor: 'transparent' },
+      link: { backgroundColor: 'transparent', paddingHorizontal: 0, paddingVertical: 0, minHeight: 'auto' as any },
     };
 
     // Disabled styles
@@ -82,6 +83,7 @@ export function Button({
       secondary: { color: '#FFFFFF' },
       outline: { color: '#007AFF' },
       ghost: { color: '#007AFF' },
+      link: { color: '#007AFF', textDecorationLine: 'underline' },
     };
 
     return {

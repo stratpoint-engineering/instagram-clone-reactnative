@@ -1,9 +1,9 @@
 /**
  * Components Index - Phase 1 Flat Structure
- * 
+ *
  * This file exports all components for easy importing.
  * Following Phase 1 pattern with organized subdirectories.
- * 
+ *
  * Usage:
  * import { Button, PostCard, LoginForm } from '@/components';
  * // or specific categories:
@@ -20,6 +20,9 @@ export * from './social';
 
 // Form Components
 export * from './forms';
+
+// Auth Components
+export * from './auth';
 
 // Hybrid Components (custom implementations)
 export { default as LinearGradient } from './LinearGradient';
