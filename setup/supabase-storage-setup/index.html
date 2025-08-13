@@ -12,9 +12,13 @@
         <meta name="author" content="React Native Development Team">
       
       
-        <link rel="canonical" href="https://your-domain.com/maintenance/ota-updates/">
+        <link rel="canonical" href="https://your-domain.com/setup/supabase-storage-setup/">
       
       
+        <link rel="prev" href="../supabase-usage/">
+      
+      
+        <link rel="next" href="../package-management/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Ota Updates - React Native Developer Guide</title>
+        <title>Supabase Storage - React Native Developer Guide</title>
       
     
     
@@ -76,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ota-updates" class="md-skip">
+        <a href="#supabase-storage-setup-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ota Updates
+              Supabase Storage
             
           </span>
         </div>
@@ -282,8 +286,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -294,13 +300,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -316,7 +320,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Getting Started
@@ -330,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/environment-setup/" class="md-nav__link">
+      <a href="../environment-setup/" class="md-nav__link">
         
   
   
@@ -353,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/project-structure/" class="md-nav__link">
+      <a href="../project-structure/" class="md-nav__link">
         
   
   
@@ -376,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/supabase-setup/" class="md-nav__link">
+      <a href="../supabase-setup/" class="md-nav__link">
         
   
   
@@ -399,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/supabase-usage/" class="md-nav__link">
+      <a href="../supabase-usage/" class="md-nav__link">
         
   
   
@@ -419,10 +423,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../setup/supabase-storage-setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Supabase Storage
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -433,6 +459,179 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#required-storage-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Storage Buckets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-access-storage-in-supabase-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Access Storage in Supabase Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-storage-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create Storage Buckets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Create Storage Buckets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-avatars-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create "avatars" bucket:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-posts-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create "posts" bucket:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-stories-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create "stories" bucket:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-set-up-storage-policies-rls" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Set Up Storage Policies (RLS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Set Up Storage Policies (RLS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avatars-bucket-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avatars Bucket Policies:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posts-bucket-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Posts Bucket Policies:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stories-bucket-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stories Bucket Policies:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test-storage-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Test Storage Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-organization-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Organization Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -445,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/package-management/" class="md-nav__link">
+      <a href="../package-management/" class="md-nav__link">
         
   
   
@@ -1394,27 +1593,153 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#required-storage-buckets" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Required Storage Buckets
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#step-by-step-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation
+      Step-by-Step Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-access-storage-in-supabase-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Access Storage in Supabase Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-storage-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create Storage Buckets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Create Storage Buckets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-avatars-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create "avatars" bucket:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-posts-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create "posts" bucket:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-stories-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create "stories" bucket:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-set-up-storage-policies-rls" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Set Up Storage Policies (RLS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Set Up Storage Policies (RLS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avatars-bucket-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avatars Bucket Policies:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posts-bucket-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Posts Bucket Policies:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stories-bucket-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stories Bucket Policies:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test-storage-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Test Storage Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-organization-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Organization Structure
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#security-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Best Practices
+      Security Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
     </span>
   </a>
   
@@ -1439,21 +1764,175 @@
   
 
 
-<h1 id="ota-updates">Ota Updates<a class="headerlink" href="#ota-updates" title="Permanent link">&para;</a></h1>
-<p>Guide to ota updates in React Native applications.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>This section covers best practices and implementation strategies for ota updates.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Coming soon - detailed implementation guide.</p>
-<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h1 id="supabase-storage-setup-guide">Supabase Storage Setup Guide<a class="headerlink" href="#supabase-storage-setup-guide" title="Permanent link">&para;</a></h1>
+<p>This guide will help you set up the storage buckets in your Supabase project for the Instagram clone app.</p>
+<h2 id="required-storage-buckets">Required Storage Buckets<a class="headerlink" href="#required-storage-buckets" title="Permanent link">&para;</a></h2>
+<p>You need to create three storage buckets:</p>
 <ol>
-<li>Follow industry standards</li>
-<li>Implement proper error handling</li>
-<li>Test thoroughly across platforms</li>
-<li>Monitor performance and usage</li>
+<li><strong>avatars</strong> - For user profile pictures</li>
+<li><strong>posts</strong> - For post images</li>
+<li><strong>stories</strong> - For story images</li>
 </ol>
-<hr />
-<p><strong>Pro Tip</strong>: Start with basic implementation and gradually add advanced features based on your app's needs.</p>
+<h2 id="step-by-step-setup">Step-by-Step Setup<a class="headerlink" href="#step-by-step-setup" title="Permanent link">&para;</a></h2>
+<h3 id="1-access-storage-in-supabase-dashboard">1. Access Storage in Supabase Dashboard<a class="headerlink" href="#1-access-storage-in-supabase-dashboard" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to your Supabase project dashboard</li>
+<li>Navigate to <strong>Storage</strong> in the left sidebar</li>
+<li>You'll see the storage overview page</li>
+</ol>
+<h3 id="2-create-storage-buckets">2. Create Storage Buckets<a class="headerlink" href="#2-create-storage-buckets" title="Permanent link">&para;</a></h3>
+<p>For each bucket, follow these steps:</p>
+<h4 id="create-avatars-bucket">Create "avatars" bucket:<a class="headerlink" href="#create-avatars-bucket" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Click <strong>"New bucket"</strong></li>
+<li><strong>Bucket name</strong>: <code>avatars</code></li>
+<li><strong>Public bucket</strong>: ✅ <strong>Enable</strong> (avatars should be publicly accessible)</li>
+<li><strong>File size limit</strong>: <code>10 MB</code></li>
+<li><strong>Allowed MIME types</strong>: <code>image/jpeg,image/jpg,image/png,image/webp</code></li>
+<li>Click <strong>"Create bucket"</strong></li>
+</ol>
+<h4 id="create-posts-bucket">Create "posts" bucket:<a class="headerlink" href="#create-posts-bucket" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Click <strong>"New bucket"</strong></li>
+<li><strong>Bucket name</strong>: <code>posts</code></li>
+<li><strong>Public bucket</strong>: ✅ <strong>Enable</strong> (posts should be publicly accessible)</li>
+<li><strong>File size limit</strong>: <code>10 MB</code></li>
+<li><strong>Allowed MIME types</strong>: <code>image/jpeg,image/jpg,image/png,image/webp</code></li>
+<li>Click <strong>"Create bucket"</strong></li>
+</ol>
+<h4 id="create-stories-bucket">Create "stories" bucket:<a class="headerlink" href="#create-stories-bucket" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Click <strong>"New bucket"</strong></li>
+<li><strong>Bucket name</strong>: <code>stories</code></li>
+<li><strong>Public bucket</strong>: ✅ <strong>Enable</strong> (stories should be publicly accessible)</li>
+<li><strong>File size limit</strong>: <code>10 MB</code></li>
+<li><strong>Allowed MIME types</strong>: <code>image/jpeg,image/jpg,image/png,image/webp</code></li>
+<li>Click <strong>"Create bucket"</strong></li>
+</ol>
+<h3 id="3-set-up-storage-policies-rls">3. Set Up Storage Policies (RLS)<a class="headerlink" href="#3-set-up-storage-policies-rls" title="Permanent link">&para;</a></h3>
+<p>For each bucket, you need to set up Row Level Security (RLS) policies:</p>
+<h4 id="avatars-bucket-policies">Avatars Bucket Policies:<a class="headerlink" href="#avatars-bucket-policies" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Go to <strong>Storage</strong> → <strong>Policies</strong></li>
+<li>Select the <strong>avatars</strong> bucket</li>
+<li>Click <strong>"New policy"</strong></li>
+</ol>
+<p><strong>Policy 1: Allow authenticated users to upload their own avatars</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- Policy name: &quot;Users can upload their own avatars&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">-- Operation: INSERT</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></p>
+<p><strong>Policy 2: Allow public read access to avatars</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- Policy name: &quot;Public read access for avatars&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">-- Operation: SELECT</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">-- Target roles: public, authenticated</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">true</span>
+</code></pre></div></p>
+<p><strong>Policy 3: Allow users to update their own avatars</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Policy name: &quot;Users can update their own avatars&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">-- Operation: UPDATE</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></p>
+<p><strong>Policy 4: Allow users to delete their own avatars</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- Policy name: &quot;Users can delete their own avatars&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">-- Operation: DELETE</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></p>
+<h4 id="posts-bucket-policies">Posts Bucket Policies:<a class="headerlink" href="#posts-bucket-policies" title="Permanent link">&para;</a></h4>
+<p><strong>Policy 1: Allow authenticated users to upload posts</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- Policy name: &quot;Users can upload their own posts&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">-- Operation: INSERT</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></p>
+<p><strong>Policy 2: Allow public read access to posts</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">-- Policy name: &quot;Public read access for posts&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">-- Operation: SELECT</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">-- Target roles: public, authenticated</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">true</span>
+</code></pre></div></p>
+<p><strong>Policy 3: Allow users to delete their own posts</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- Policy name: &quot;Users can delete their own posts&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">-- Operation: DELETE</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></p>
+<h4 id="stories-bucket-policies">Stories Bucket Policies:<a class="headerlink" href="#stories-bucket-policies" title="Permanent link">&para;</a></h4>
+<p><strong>Policy 1: Allow authenticated users to upload stories</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">-- Policy name: &quot;Users can upload their own stories&quot;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">-- Operation: INSERT</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></p>
+<p><strong>Policy 2: Allow public read access to stories</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">-- Policy name: &quot;Public read access for stories&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">-- Operation: SELECT</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1">-- Target roles: public, authenticated</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">true</span>
+</code></pre></div></p>
+<p><strong>Policy 3: Allow users to delete their own stories</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">-- Policy name: &quot;Users can delete their own stories&quot;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">-- Operation: DELETE</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">-- Target roles: authenticated</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">uid</span><span class="p">()::</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">storage</span><span class="p">.</span><span class="n">foldername</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></p>
+<h3 id="4-test-storage-setup">4. Test Storage Setup<a class="headerlink" href="#4-test-storage-setup" title="Permanent link">&para;</a></h3>
+<p>After setting up the buckets and policies, you can test the storage functionality:</p>
+<ol>
+<li>Try uploading a test image through the Supabase dashboard</li>
+<li>Verify that the public URL works</li>
+<li>Test the policies by trying to access files with different user roles</li>
+</ol>
+<h2 id="file-organization-structure">File Organization Structure<a class="headerlink" href="#file-organization-structure" title="Permanent link">&para;</a></h2>
+<p>The storage utilities in the app organize files as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>avatars/
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  └── {userId}/
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>      └── {timestamp}_{random}.{ext}
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>posts/
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  └── posts/
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>      └── {userId}/
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>          └── {timestamp}_{random}.{ext}
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>stories/
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  └── stories/
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>      └── {userId}/
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>          └── {timestamp}_{random}.{ext}
+</code></pre></div>
+<h2 id="security-notes">Security Notes<a class="headerlink" href="#security-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>All buckets are set to public for read access (required for displaying images)</li>
+<li>Write/delete access is restricted to the file owner via RLS policies</li>
+<li>File size is limited to 10MB per file</li>
+<li>Only image files are allowed (JPEG, PNG, WebP)</li>
+<li>Files are organized by user ID to prevent conflicts and enable proper access control</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p><strong>Issue: "Access denied" when uploading</strong>
+- Check that RLS policies are correctly set up
+- Verify that the user is authenticated
+- Ensure the file path follows the expected structure</p>
+<p><strong>Issue: Images not loading</strong>
+- Verify that the bucket is set to public
+- Check that the public URL is correctly generated
+- Ensure the file was uploaded successfully</p>
+<p><strong>Issue: File upload fails</strong>
+- Check file size (must be &lt; 10MB)
+- Verify file type is allowed (JPEG, PNG, WebP)
+- Check network connectivity</p>
 
 
 
