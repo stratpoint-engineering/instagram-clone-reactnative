@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useAuthStore, useAuthActions } from '@/store';
 import type { User, Session, AuthError } from '@supabase/supabase-js';
@@ -44,20 +44,19 @@ export interface UpdatePasswordData {
  * const { user, isAuthenticated, login, logout, signUp } = useAuth();
  */
 export function useAuth() {
-  // Get state from Zustand store
-  const state = useAuthStore();
-  const actions = useAuthActions();
+  // Get state and actions from Zustand store
+  const store = useAuthStore();
 
   // Set error helper
   const setError = useCallback((error: string | null) => {
-    actions.setError(error);
-    actions.setLoading(false);
-  }, [actions]);
+    store.setError(error);
+    store.setLoading(false);
+  }, [store]);
 
   // Clear error helper
   const clearError = useCallback(() => {
-    actions.clearError();
-  }, [actions]);
+    store.clearError();
+  }, [store]);
 
   // Fetch user profile from database
   const fetchUserProfile = useCallback(async (userId: string): Promise<Profile | null> => {
@@ -80,41 +79,13 @@ export function useAuth() {
     }
   }, []);
 
-  // Initialize auth state
-  const initializeAuth = useCallback(async () => {
-    try {
-      actions.setLoading(true);
-      actions.clearError();
 
-      // Get current session
-      const { data: { session }, error } = await supabase.auth.getSession();
-
-      if (error) {
-        console.error('Error getting session:', error);
-        setError('Failed to initialize authentication');
-        return;
-      }
-
-      if (session?.user) {
-        // Fetch user profile
-        const profile = await fetchUserProfile(session.user.id);
-
-        actions.login(session.user, profile, session);
-      } else {
-        actions.logout();
-        actions.setLoading(false);
-      }
-    } catch (error) {
-      console.error('Auth initialization error:', error);
-      setError('Failed to initialize authentication');
-    }
-  }, [actions, setError, fetchUserProfile]);
 
   // Login with email and password
   const login = useCallback(async (credentials: LoginCredentials) => {
     try {
-      actions.setLoading(true);
-      actions.clearError();
+      store.setLoading(true);
+      store.clearError();
 
       const { data, error } = await supabase.auth.signInWithPassword({
         email: credentials.email,
@@ -128,7 +99,7 @@ export function useAuth() {
 
       if (data.user && data.session) {
         const profile = await fetchUserProfile(data.user.id);
-        actions.login(data.user, profile, data.session);
+        store.login(data.user, profile, data.session);
       }
 
       return { success: true, error: null };
@@ -137,13 +108,13 @@ export function useAuth() {
       setError(errorMessage);
       return { success: false, error: errorMessage };
     }
-  }, [actions, setError, fetchUserProfile]);
+  }, [store, setError, fetchUserProfile]);
 
   // Sign up with email and password
   const signUp = useCallback(async (credentials: SignUpCredentials) => {
     try {
-      actions.setLoading(true);
-      actions.clearError();
+      store.setLoading(true);
+      store.clearError();
 
       const { data, error } = await supabase.auth.signUp({
         email: credentials.email,
@@ -166,12 +137,12 @@ export function useAuth() {
         if (data.session) {
           // User is immediately authenticated (no email verification required)
           const profile = await fetchUserProfile(data.user.id);
-          actions.login(data.user, profile, data.session);
+          store.login(data.user, profile, data.session);
         } else {
           // User needs to verify email
-          actions.setUser(data.user);
-          actions.setAuthenticated(false);
-          actions.setLoading(false);
+          store.setUser(data.user);
+          store.setAuthenticated(false);
+          store.setLoading(false);
         }
       }
 
@@ -185,13 +156,13 @@ export function useAuth() {
       setError(errorMessage);
       return { success: false, error: errorMessage };
     }
-  }, [actions, setError, fetchUserProfile]);
+  }, [store, setError, fetchUserProfile]);
 
   // Logout
   const logout = useCallback(async () => {
     try {
-      actions.setLoading(true);
-      actions.clearError();
+      store.setLoading(true);
+      store.clearError();
 
       const { error } = await supabase.auth.signOut();
 
@@ -200,7 +171,7 @@ export function useAuth() {
         return { success: false, error: error.message };
       }
 
-      actions.logout();
+      store.logout();
 
       return { success: true, error: null };
     } catch (error) {
@@ -208,13 +179,13 @@ export function useAuth() {
       setError(errorMessage);
       return { success: false, error: errorMessage };
     }
-  }, [actions, setError]);
+  }, [store, setError]);
 
   // Reset password
   const resetPassword = useCallback(async (data: ResetPasswordData) => {
     try {
-      actions.setLoading(true);
-      actions.clearError();
+      store.setLoading(true);
+      store.clearError();
 
       const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
         redirectTo: `${window.location.origin}/reset-password`,
@@ -225,20 +196,20 @@ export function useAuth() {
         return { success: false, error: error.message };
       }
 
-      actions.setLoading(false);
+      store.setLoading(false);
       return { success: true, error: null };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Password reset failed';
       setError(errorMessage);
       return { success: false, error: errorMessage };
     }
-  }, [actions, setError]);
+  }, [store, setError]);
 
   // Update password
   const updatePassword = useCallback(async (data: UpdatePasswordData) => {
     try {
-      actions.setLoading(true);
-      actions.clearError();
+      store.setLoading(true);
+      store.clearError();
 
       const { error } = await supabase.auth.updateUser({
         password: data.newPassword,
@@ -249,55 +220,104 @@ export function useAuth() {
         return { success: false, error: error.message };
       }
 
-      actions.setLoading(false);
+      store.setLoading(false);
       return { success: true, error: null };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Password update failed';
       setError(errorMessage);
       return { success: false, error: errorMessage };
     }
-  }, [actions, setError]);
+  }, [store, setError]);
 
   // Refresh user data
   const refreshUser = useCallback(async () => {
-    if (!state.user) return;
+    if (!store.user) return;
 
     try {
-      const profile = await fetchUserProfile(state.user.id);
-      actions.setProfile(profile);
+      const profile = await fetchUserProfile(store.user.id);
+      store.setProfile(profile);
     } catch (error) {
       console.error('Error refreshing user data:', error);
     }
-  }, [state.user, fetchUserProfile, actions]);
+  }, [store, fetchUserProfile]);
 
-  // Set up auth state listener
+  // Initialize auth state once on mount
+  const initializationRef = useRef(false);
+
   useEffect(() => {
-    // Initialize auth on mount
-    initializeAuth();
+    if (initializationRef.current) return; // Prevent multiple initializations
+    initializationRef.current = true;
+
+    let mounted = true;
+
+    const initAuth = async () => {
+      if (!mounted) return;
+
+      try {
+        store.setLoading(true);
+
+        // Get current session
+        const { data: { session }, error } = await supabase.auth.getSession();
+
+        if (!mounted) return;
+
+        if (error) {
+          console.error('Auth session error:', error);
+          store.logout();
+          return;
+        }
+
+        if (session?.user) {
+          // User is authenticated
+          const profile = await fetchUserProfile(session.user.id);
+          if (mounted) {
+            store.login(session.user, profile, session);
+          }
+        } else {
+          // No session
+          if (mounted) {
+            store.logout();
+          }
+        }
+      } catch (err) {
+        console.error('Auth init error:', err);
+        if (mounted) {
+          store.logout();
+        }
+      }
+    };
+
+    initAuth();
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log('Auth state changed:', event, session?.user?.id);
+        if (!mounted) return;
+
+        console.log('Auth state change:', event);
 
         if (session?.user) {
           const profile = await fetchUserProfile(session.user.id);
-          actions.login(session.user, profile, session);
+          if (mounted) {
+            store.login(session.user, profile, session);
+          }
         } else {
-          actions.logout();
+          if (mounted) {
+            store.logout();
+          }
         }
       }
     );
 
-    // Cleanup subscription on unmount
     return () => {
+      mounted = false;
       subscription.unsubscribe();
     };
-  }, [initializeAuth, fetchUserProfile, actions]);
+  }, []); // Empty dependency array to run only once
 
   return {
     // State
-    ...state,
+    ...store,
 
     // Actions
     login,

@@ -1,26 +1,112 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Dimensions, Image, ActivityIndicator, Alert, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Settings, Grid, UserCheck } from 'lucide-react-native';
+import { Settings, Grid, UserCheck, LogOut } from 'lucide-react-native';
+import { router } from 'expo-router';
 
 import LinearGradient from '@/components/LinearGradient';
 
 import { useProfile } from '@/hooks/useProfile';
+import { useAuth } from '@/hooks/useAuth';
 
 const { width } = Dimensions.get('window');
 const imageSize = (width - 6) / 3;
 
 export default function ProfileScreen() {
-  const { user, posts, isFollowing, toggleFollow } = useProfile();
+  const { user, posts, isFollowing, toggleFollow, isLoading, error, isOwnProfile } = useProfile();
+  const { logout } = useAuth();
+
+  console.log('ProfileScreen render - isOwnProfile:', isOwnProfile, 'user:', user?.username);
+
+  // Handle logout
+  const handleLogout = async () => {
+    console.log('handleLogout called');
+
+    const performLogout = async () => {
+      console.log('Sign Out confirmed');
+      try {
+        console.log('Calling logout...');
+        const result = await logout();
+        console.log('Logout result:', result);
+        console.log('Navigating to login...');
+        router.replace('/auth/login');
+      } catch (error) {
+        console.error('Logout error:', error);
+        if (Platform.OS === 'web') {
+          alert('Failed to sign out. Please try again.');
+        } else {
+          Alert.alert('Error', 'Failed to sign out. Please try again.');
+        }
+      }
+    };
+
+    // Use different confirmation methods for web vs mobile
+    if (Platform.OS === 'web') {
+      const confirmed = confirm('Are you sure you want to sign out?');
+      if (confirmed) {
+        await performLogout();
+      } else {
+        console.log('Logout cancelled');
+      }
+    } else {
+      Alert.alert(
+        'Sign Out',
+        'Are you sure you want to sign out?',
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel',
+          },
+          {
+            text: 'Sign Out',
+            style: 'destructive',
+            onPress: performLogout,
+          },
+        ]
+      );
+    }
+  };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#007AFF" />
+          <Text style={styles.loadingText}>Loading profile...</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // Show error state
+  if (error || !user) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>{error || 'Failed to load profile'}</Text>
+          <TouchableOpacity style={styles.retryButton} onPress={() => window.location.reload()}>
+            <Text style={styles.retryButtonText}>Retry</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.username}>{user.username}</Text>
-        <TouchableOpacity>
-          <Settings size={24} color="#000" />
-        </TouchableOpacity>
+        {isOwnProfile ? (
+          <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+            <LogOut size={24} color="#000" />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity>
+            <Settings size={24} color="#000" />
+          </TouchableOpacity>
+        )}
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -63,21 +149,34 @@ export default function ProfileScreen() {
           </View>
 
           <View style={styles.actionButtons}>
-            <TouchableOpacity onPress={toggleFollow}>
-              <LinearGradient
-                colors={isFollowing ? ['#f5f5f5', '#f5f5f5'] : ['#833ab4', '#fd1d1d', '#fcb045']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={styles.followButton}
-              >
-                <Text style={[styles.followButtonText, isFollowing && styles.followingButtonText]}>
-                  {isFollowing ? 'Following' : 'Follow'}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.messageButton}>
-              <Text style={styles.messageButtonText}>Message</Text>
-            </TouchableOpacity>
+            {isOwnProfile ? (
+              <>
+                <TouchableOpacity style={styles.editProfileButton}>
+                  <Text style={styles.editProfileButtonText}>Edit Profile</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.shareProfileButton}>
+                  <Text style={styles.shareProfileButtonText}>Share Profile</Text>
+                </TouchableOpacity>
+              </>
+            ) : (
+              <>
+                <TouchableOpacity onPress={toggleFollow}>
+                  <LinearGradient
+                    colors={isFollowing ? ['#f5f5f5', '#f5f5f5'] : ['#833ab4', '#fd1d1d', '#fcb045']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.followButton}
+                  >
+                    <Text style={[styles.followButtonText, isFollowing && styles.followingButtonText]}>
+                      {isFollowing ? 'Following' : 'Follow'}
+                    </Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.messageButton}>
+                  <Text style={styles.messageButtonText}>Message</Text>
+                </TouchableOpacity>
+              </>
+            )}
           </View>
         </View>
 
@@ -247,5 +346,69 @@ const styles = StyleSheet.create({
   gridImage: {
     width: '100%',
     height: '100%',
+  },
+  // Loading and error states
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  loadingText: {
+    fontSize: 16,
+    color: '#8e8e8e',
+    marginTop: 16,
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  errorText: {
+    fontSize: 16,
+    color: '#FF3B30',
+    textAlign: 'center',
+    marginBottom: 16,
+  },
+  retryButton: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  retryButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  logoutButton: {
+    padding: 4,
+  },
+  editProfileButton: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+    marginRight: 8,
+    alignItems: 'center',
+  },
+  editProfileButtonText: {
+    color: '#000',
+    fontWeight: '600',
+    fontSize: 14,
+  },
+  shareProfileButton: {
+    backgroundColor: '#f5f5f5',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  shareProfileButtonText: {
+    color: '#000',
+    fontWeight: '600',
+    fontSize: 14,
   },
 });

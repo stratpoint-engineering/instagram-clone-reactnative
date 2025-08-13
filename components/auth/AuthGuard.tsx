@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { router } from 'expo-router';
 import { useAuth } from '@/hooks';
-import { useIsAuthenticated, useAuthLoading } from '@/store';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -38,57 +37,31 @@ export function AuthGuard({
   requireAuth = true,
   requireProfile = false,
 }: AuthGuardProps) {
-  const { user, profile } = useAuth();
-  const isAuthenticated = useIsAuthenticated();
-  const isLoading = useAuthLoading();
-
-  useEffect(() => {
-    // Don't redirect during loading
-    if (isLoading) return;
-
-    if (requireAuth && !isAuthenticated) {
-      // User needs to be authenticated but isn't
-      console.log('AuthGuard: Redirecting to login - user not authenticated');
-      router.replace(redirectTo as any);
-      return;
-    }
-
-    if (!requireAuth && isAuthenticated) {
-      // User shouldn't be authenticated but is (e.g., login page when already logged in)
-      console.log('AuthGuard: Redirecting to home - user already authenticated');
-      router.replace('/(tabs)');
-      return;
-    }
-
-    if (requireProfile && isAuthenticated && !profile) {
-      // User is authenticated but needs to complete profile
-      console.log('AuthGuard: Redirecting to profile setup - profile incomplete');
-      router.replace('/profile-setup' as any);
-      return;
-    }
-  }, [isLoading, isAuthenticated, user, profile, requireAuth, requireProfile, redirectTo]);
+  const { user, profile, isAuthenticated, isLoading } = useAuth();
 
   // Show loading state
   if (isLoading) {
     return fallback || <AuthLoadingFallback />;
   }
 
-  // Show content if auth requirements are met
-  if (requireAuth && isAuthenticated) {
-    // Check profile requirement
-    if (requireProfile && !profile) {
-      return fallback || <ProfileRequiredFallback />;
-    }
-    return <>{children}</>;
+  // Check auth requirements
+  if (requireAuth && !isAuthenticated) {
+    // User needs to be authenticated but isn't
+    return fallback || <AuthLoadingFallback />;
   }
 
-  // Show content if no auth required and user is not authenticated
-  if (!requireAuth && !isAuthenticated) {
-    return <>{children}</>;
+  if (!requireAuth && isAuthenticated) {
+    // User shouldn't be authenticated but is
+    return fallback || <AuthLoadingFallback />;
   }
 
-  // Show fallback while redirecting
-  return fallback || <AuthLoadingFallback />;
+  if (requireProfile && isAuthenticated && !profile) {
+    // User is authenticated but needs to complete profile
+    return fallback || <ProfileRequiredFallback />;
+  }
+
+  // All checks passed, render children
+  return <>{children}</>;
 }
 
 /**
@@ -144,9 +117,7 @@ export function useAuthAccess(requirements: {
   requireAuth?: boolean;
   requireProfile?: boolean;
 }) {
-  const { user, profile } = useAuth();
-  const isAuthenticated = useIsAuthenticated();
-  const isLoading = useAuthLoading();
+  const { user, profile, isAuthenticated, isLoading } = useAuth();
 
   const { requireAuth = true, requireProfile = false } = requirements;
 

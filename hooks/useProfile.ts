@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useAuth } from './useAuth';
+import { userService, postService } from '@/lib/services';
+import type { Profile, Post } from '@/lib/database/types';
 
-interface User {
+interface ProfileUser {
   username: string;
   displayName: string;
   avatar: string;
@@ -11,45 +14,155 @@ interface User {
   followingCount: number;
 }
 
-interface Post {
+interface ProfilePost {
   id: string;
   image: string;
 }
 
-export function useProfile() {
-  const [user] = useState<User>({
-    username: 'your_username',
-    displayName: 'Your Name',
-    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
-    bio: 'Living life one photo at a time 📸\nTravel • Photography • Coffee',
-    website: 'www.yourwebsite.com',
-    postsCount: 127,
-    followersCount: 1234,
-    followingCount: 567,
-  });
-
-  const [posts, setPosts] = useState<Post[]>([]);
+/**
+ * Enhanced useProfile hook with Supabase integration
+ *
+ * Features:
+ * - Real user data from Supabase profiles table
+ * - Real posts data from Supabase posts table
+ * - Follow/unfollow functionality
+ * - Loading states and error handling
+ * - Support for viewing other users' profiles
+ *
+ * Usage:
+ * const { user, posts, isLoading, error, isFollowing, toggleFollow } = useProfile(userId);
+ */
+export function useProfile(userId?: string) {
+  const { user: currentUser, profile: currentProfile } = useAuth();
+  const [user, setUser] = useState<ProfileUser | null>(null);
+  const [posts, setPosts] = useState<ProfilePost[]>([]);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Determine which user profile to load
+  const targetUserId = userId || currentUser?.id;
+  const isOwnProfile = !userId || userId === currentUser?.id;
+
+  // Load user profile data
+  const loadProfile = useCallback(async () => {
+    if (!targetUserId) {
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // If viewing own profile, use current profile data
+      if (isOwnProfile && currentProfile) {
+        setUser({
+          username: currentProfile.username || 'your_username',
+          displayName: currentProfile.full_name || 'Your Name',
+          avatar: currentProfile.avatar_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
+          bio: currentProfile.bio || 'Living life one photo at a time 📸\nTravel • Photography • Coffee',
+          website: currentProfile.website || undefined,
+          postsCount: 0, // Will be updated when posts load
+          followersCount: 0, // TODO: Implement follower count
+          followingCount: 0, // TODO: Implement following count
+        });
+      } else {
+        // Load other user's profile
+        const profileResult = await userService.getProfile(targetUserId);
+        if (profileResult.success && profileResult.data) {
+          const profile = profileResult.data;
+          setUser({
+            username: profile.username || 'user',
+            displayName: profile.full_name || 'User',
+            avatar: profile.avatar_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
+            bio: profile.bio || 'No bio available',
+            website: profile.website || undefined,
+            postsCount: 0, // Will be updated when posts load
+            followersCount: 0, // TODO: Implement follower count
+            followingCount: 0, // TODO: Implement following count
+          });
+
+          // Check if current user is following this user
+          if (currentUser && !isOwnProfile) {
+            const followResult = await userService.isFollowing(targetUserId);
+            if (followResult.success) {
+              setIsFollowing(followResult.data || false);
+            }
+          }
+        } else {
+          setError(profileResult.error || 'Failed to load profile');
+        }
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [targetUserId, isOwnProfile, currentProfile, currentUser]);
+
+  // Load user posts
+  const loadPosts = useCallback(async () => {
+    if (!targetUserId) return;
+
+    try {
+      const postsResult = await postService.getUserPosts(targetUserId);
+      if (postsResult.success && postsResult.data) {
+        const userPosts = postsResult.data.map(post => ({
+          id: post.id,
+          image: post.image_url || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop',
+        }));
+        setPosts(userPosts);
+
+        // Update posts count
+        setUser(prev => prev ? { ...prev, postsCount: userPosts.length } : null);
+      }
+    } catch (err) {
+      console.error('Error loading posts:', err);
+    }
+  }, [targetUserId]);
+
+  // Toggle follow status
+  const toggleFollow = useCallback(async () => {
+    if (!currentUser || !targetUserId || isOwnProfile) return;
+
+    try {
+      if (isFollowing) {
+        const result = await userService.unfollowUser(targetUserId);
+        if (result.success) {
+          setIsFollowing(false);
+        }
+      } else {
+        const result = await userService.followUser(targetUserId);
+        if (result.success) {
+          setIsFollowing(true);
+        }
+      }
+    } catch (err) {
+      console.error('Error toggling follow:', err);
+    }
+  }, [currentUser, targetUserId, isOwnProfile, isFollowing]);
+
+  // Load data on mount and when dependencies change
+  useEffect(() => {
+    loadProfile();
+  }, [loadProfile]);
 
   useEffect(() => {
-    const mockPosts: Post[] = [
-      { id: '1', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop' },
-      { id: '2', image: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=400&h=400&fit=crop' },
-      { id: '3', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=400&fit=crop' },
-      { id: '4', image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=400&fit=crop' },
-      { id: '5', image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=400&fit=crop' },
-      { id: '6', image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=400&fit=crop' },
-      { id: '7', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop' },
-      { id: '8', image: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=400&h=400&fit=crop' },
-      { id: '9', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=400&fit=crop' },
-    ];
+    loadPosts();
+  }, [loadPosts]);
 
-    setPosts(mockPosts);
-  }, []);
-
-  const toggleFollow = () => {
-    setIsFollowing(!isFollowing);
+  return {
+    user,
+    posts,
+    isFollowing,
+    toggleFollow,
+    isLoading,
+    error,
+    isOwnProfile,
+    refresh: () => {
+      loadProfile();
+      loadPosts();
+    }
   };
-
-  return { user, posts, isFollowing, toggleFollow };
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 interface ApiState<T> {
   data: T | null;
@@ -15,13 +15,13 @@ interface UseApiOptions {
 /**
  * Custom hook for API calls following Phase 1 flat structure
  * Located in: hooks/useApi.ts
- * 
+ *
  * Demonstrates:
  * - Generic API hook pattern
  * - Loading and error state management
  * - Callback options for side effects
  * - Manual and automatic execution
- * 
+ *
  * Usage:
  * import { useApi } from '@/hooks';
  * const { data, isLoading, error, execute } = useApi<User[]>('/api/users');
@@ -31,7 +31,7 @@ export function useApi<T = any>(
   options: UseApiOptions = {}
 ) {
   const { immediate = true, onSuccess, onError } = options;
-  
+
   const [state, setState] = useState<ApiState<T>>({
     data: null,
     isLoading: false,
@@ -40,16 +40,16 @@ export function useApi<T = any>(
 
   const execute = useCallback(async (customUrl?: string) => {
     const requestUrl = customUrl || url;
-    
+
     setState(prev => ({ ...prev, isLoading: true, error: null }));
 
     try {
       // Simulate API call - in real app, use fetch or axios
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Mock data based on URL
       let mockData: any = null;
-      
+
       if (requestUrl.includes('/users')) {
         mockData = [
           { id: 1, name: 'John Doe', email: 'john@example.com' },
@@ -77,7 +77,7 @@ export function useApi<T = any>(
       return mockData;
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An error occurred';
-      
+
       setState({
         data: null,
         isLoading: false,
@@ -92,12 +92,15 @@ export function useApi<T = any>(
     }
   }, [url, onSuccess, onError]);
 
-  // Execute immediately if requested
+  // Execute immediately if requested - use a ref to track if we've already executed
+  const hasExecutedRef = useRef(false);
+
   useEffect(() => {
-    if (immediate) {
+    if (immediate && !hasExecutedRef.current) {
+      hasExecutedRef.current = true;
       execute();
     }
-  }, [execute, immediate]);
+  }, [immediate]); // Remove execute from dependencies to prevent infinite loop
 
   return {
     ...state,

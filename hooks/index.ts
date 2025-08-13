@@ -13,6 +13,9 @@ export { useApi } from './useApi';
 export { useLocalStorage } from './useLocalStorage';
 export { useAuth } from './useAuth';
 
+// Enhanced hooks with Supabase integration
+export { usePosts } from './usePosts';
+
 // Existing app-specific hooks
 export { useActivity } from './useActivity';
 export { useFeed } from './useFeed';

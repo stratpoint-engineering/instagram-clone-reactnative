@@ -5,7 +5,7 @@ import { Button, Input } from '@/components/ui';
 
 interface SignUpFormProps {
   onSignUp?: (email: string, password: string, username?: string, fullName?: string) => void;
-  onSuccess?: () => void;
+  onSuccess?: (email?: string) => void;
   onLoginPress?: () => void;
 }
 
@@ -28,7 +28,7 @@ interface FormErrors {
 
 /**
  * SignUpForm component for user registration
- * 
+ *
  * Features:
  * - Email and password registration
  * - Username and full name collection
@@ -36,13 +36,13 @@ interface FormErrors {
  * - Password confirmation
  * - Integration with Supabase Auth
  * - Loading states and error handling
- * 
+ *
  * Usage:
  * <SignUpForm onSuccess={() => router.push('/profile-setup')} />
  */
 export function SignUpForm({ onSignUp, onSuccess, onLoginPress }: SignUpFormProps) {
   const { signUp, isLoading, error, clearError } = useAuth();
-  
+
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
@@ -50,7 +50,7 @@ export function SignUpForm({ onSignUp, onSuccess, onLoginPress }: SignUpFormProp
     username: '',
     fullName: '',
   });
-  
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -58,17 +58,17 @@ export function SignUpForm({ onSignUp, onSuccess, onLoginPress }: SignUpFormProp
   // Update form field
   const updateField = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    
+
     // Clear field error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
-    
+
     // Clear general error
     if (errors.general) {
       setErrors(prev => ({ ...prev, general: undefined }));
     }
-    
+
     // Clear auth error
     if (error) {
       clearError();
@@ -150,11 +150,12 @@ export function SignUpForm({ onSignUp, onSuccess, onLoginPress }: SignUpFormProp
             Alert.alert(
               'Welcome!',
               'Your account has been created successfully.',
-              [{ text: 'OK', onPress: onSuccess }]
+              [{ text: 'OK', onPress: () => onSuccess?.(formData.email) }]
             );
           }
-          
+
           // Reset form
+          const userEmail = formData.email; // Store email before resetting
           setFormData({
             email: '',
             password: '',
@@ -163,9 +164,9 @@ export function SignUpForm({ onSignUp, onSuccess, onLoginPress }: SignUpFormProp
             fullName: '',
           });
           setErrors({});
-          
+
           if (onSuccess) {
-            onSuccess();
+            onSuccess(userEmail);
           }
         }
       }

@@ -127,7 +127,6 @@ export const useAuthStore = create<AuthStore>()(
           isAuthenticated: true,
           isLoading: false,
           error: null,
-          // Set first time user to false if they have a profile
           isFirstTimeUser: !profile,
         });
       },
@@ -140,9 +139,6 @@ export const useAuthStore = create<AuthStore>()(
           isAuthenticated: false,
           isLoading: false,
           error: null,
-          // Keep onboarding state on logout
-          // hasCompletedOnboarding: false,
-          // isFirstTimeUser: true,
         });
       },
 
