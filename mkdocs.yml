@@ -67,6 +67,9 @@ nav:
   - Getting Started:
     - Environment Setup: setup/environment-setup.md
     - Project Structure: setup/project-structure.md
+    - Supabase Setup: setup/supabase-setup.md
+    - Supabase Usage: setup/supabase-usage.md
+    - Supabase Storage: setup/supabase-storage-setup.md
     - Package Management: setup/package-management.md
   - Architecture:
     - App Architecture: architecture/app-architecture.md
@@ -88,6 +91,8 @@ nav:
     - Testing: tools/testing.md
     - Code Quality: tools/code-quality.md
     - Performance: tools/performance.md
+  - Troubleshooting:
+    - iOS Issues: troubleshooting/ios-troubleshooting.md
   - Data & Networking:
     - API Integration: data/api-integration.md
     - State Synchronization: data/state-sync.md

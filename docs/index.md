@@ -96,8 +96,9 @@ This guide is designed to take you from React Native beginner to production-read
 
 1. [Environment Setup](setup/environment-setup.md)
 2. [Project Structure](setup/project-structure.md)
-3. [Component Design](architecture/component-design.md)
-4. [Styling Systems](ui/styling-systems.md)
+3. [Supabase Setup](setup/supabase-setup.md)
+4. [Component Design](architecture/component-design.md)
+5. [Styling Systems](ui/styling-systems.md)
 
 ### For Intermediate Developers
 
