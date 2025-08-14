@@ -2,178 +2,182 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://your-domain.com/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup-mkdocs/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/architecture/app-architecture/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/architecture/component-design/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/architecture/navigation/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/architecture/state-management/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/data/api-integration/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/data/offline-support/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/data/realtime-data/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/data/state-sync/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/deployment/app-store/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/deployment/build-config/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/deployment/cicd/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/deployment/google-play/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/maintenance/legacy-support/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/maintenance/migrations/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/maintenance/ota-updates/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/maintenance/version-management/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/monitoring/ab-testing/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/monitoring/analytics/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/monitoring/crash-reporting/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/monitoring/performance/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/native/expo-vs-pure-rn/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/native/native-modules/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/native/permissions/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/native/platform-specific/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/security/api-security/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/security/app-security/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/security/authentication/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/security/data-security/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup/environment-setup/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup/package-management/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup/project-structure/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup/supabase-setup/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup/supabase-storage-setup/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/setup/supabase-usage/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/tools/code-quality/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/tools/debugging/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/tools/performance/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/tools/testing/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://your-domain.com/troubleshooting/ios-troubleshooting/</loc>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/ui/animations/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/ui/design-systems/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/ui/responsive-design/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://your-domain.com/ui/styling-systems/</loc>
-         <lastmod>2025-08-13</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
 </urlset>

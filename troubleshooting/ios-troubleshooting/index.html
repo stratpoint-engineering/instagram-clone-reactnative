@@ -12,13 +12,13 @@
         <meta name="author" content="React Native Development Team">
       
       
-        <link rel="canonical" href="https://your-domain.com/native/platform-specific/">
+        <link rel="canonical" href="https://your-domain.com/troubleshooting/ios-troubleshooting/">
       
       
-        <link rel="prev" href="../native-modules/">
+        <link rel="prev" href="../../tools/performance/">
       
       
-        <link rel="next" href="../permissions/">
+        <link rel="next" href="../../data/api-integration/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Platform Specific - React Native Developer Guide</title>
+        <title>iOS Issues - React Native Developer Guide</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#platform-specific-code" class="md-skip">
+        <a href="#ios-development-troubleshooting-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Platform Specific
+              iOS Issues
             
           </span>
         </div>
@@ -764,8 +764,6 @@
       
   
   
-    
-  
   
   
     
@@ -778,11 +776,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -798,7 +798,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Native Integration
@@ -812,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../expo-vs-pure-rn/" class="md-nav__link">
+      <a href="../../native/expo-vs-pure-rn/" class="md-nav__link">
         
   
   
@@ -835,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../native-modules/" class="md-nav__link">
+      <a href="../../native/native-modules/" class="md-nav__link">
         
   
   
@@ -855,32 +855,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Platform Specific
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../native/platform-specific/" class="md-nav__link">
         
   
   
@@ -891,191 +869,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#platform-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform Detection
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Platform Detection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-platform-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Platform Checks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#platform-specific-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform-Specific Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-based-platform-separation" class="md-nav__link">
-    <span class="md-ellipsis">
-      File-Based Platform Separation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="File-Based Platform Separation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#platform-specific-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform-Specific Files
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#platform-specific-styling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform-Specific Styling
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Platform-Specific Styling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#conditional-styles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditional Styles
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safe-area-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Safe Area Handling
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#navigation-differences" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigation Differences
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Navigation Differences">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#platform-specific-navigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform-Specific Navigation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practices
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Best Practices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-minimize-platform-specific-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Minimize Platform-Specific Code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-use-platformselect-sparingly" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Use Platform.select Sparingly
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-test-on-both-platforms" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Test on Both Platforms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-follow-platform-guidelines" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Follow Platform Guidelines
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1088,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../permissions/" class="md-nav__link">
+      <a href="../../native/permissions/" class="md-nav__link">
         
   
   
@@ -1259,8 +1052,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1271,13 +1066,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1293,7 +1086,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Troubleshooting
@@ -1304,10 +1097,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../troubleshooting/ios-troubleshooting/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    iOS Issues
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1318,6 +1133,251 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cocoapods-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      CocoaPods Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CocoaPods Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-pod-install-fails-with-rubynodejs-path-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: pod install fails with Ruby/Node.js PATH errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-cocoapods-version-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: CocoaPods version conflicts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ruby-environment-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ruby Environment Problems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ruby Environment Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-ruby-version-incompatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Ruby version incompatibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-gem-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Gem permissions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xcode-build-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xcode Build Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xcode Build Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-swift-compilation-errors-in-expo-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Swift compilation errors in expo-image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-missing-development-team-or-signing-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Missing development team or signing issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulator-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulator Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulator Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-app-doesnt-open-in-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: App doesn't open in simulator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-metro-bundler-connection-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Metro bundler connection issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-build-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Build Problems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Build Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-development-build-vs-expo-go-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Development build vs Expo Go confusion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-build-artifacts-and-cache-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Build artifacts and cache issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-ios-development-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential iOS Development Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common File Locations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1680,28 +1740,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#platform-detection" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform Detection
+      Table of Contents
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Platform Detection">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cocoapods-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      CocoaPods Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CocoaPods Issues">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-platform-checks" class="md-nav__link">
+  <a href="#problem-pod-install-fails-with-rubynodejs-path-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Platform Checks
+      Problem: pod install fails with Ruby/Node.js PATH errors
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#platform-specific-components" class="md-nav__link">
+  <a href="#problem-cocoapods-version-conflicts" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform-Specific Components
+      Problem: CocoaPods version conflicts
     </span>
   </a>
   
@@ -1713,19 +1782,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#file-based-platform-separation" class="md-nav__link">
+  <a href="#ruby-environment-problems" class="md-nav__link">
     <span class="md-ellipsis">
-      File-Based Platform Separation
+      Ruby Environment Problems
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="File-Based Platform Separation">
+    <nav class="md-nav" aria-label="Ruby Environment Problems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform-specific-files" class="md-nav__link">
+  <a href="#problem-ruby-version-incompatibility" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform-Specific Files
+      Problem: Ruby version incompatibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-gem-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Gem permissions
     </span>
   </a>
   
@@ -1737,28 +1815,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#platform-specific-styling" class="md-nav__link">
+  <a href="#xcode-build-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform-Specific Styling
+      Xcode Build Errors
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Platform-Specific Styling">
+    <nav class="md-nav" aria-label="Xcode Build Errors">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#conditional-styles" class="md-nav__link">
+  <a href="#problem-swift-compilation-errors-in-expo-image" class="md-nav__link">
     <span class="md-ellipsis">
-      Conditional Styles
+      Problem: Swift compilation errors in expo-image
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#safe-area-handling" class="md-nav__link">
+  <a href="#problem-missing-development-team-or-signing-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Safe Area Handling
+      Problem: Missing development team or signing issues
     </span>
   </a>
   
@@ -1770,19 +1848,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#navigation-differences" class="md-nav__link">
+  <a href="#simulator-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Navigation Differences
+      Simulator Issues
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Navigation Differences">
+    <nav class="md-nav" aria-label="Simulator Issues">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform-specific-navigation" class="md-nav__link">
+  <a href="#problem-app-doesnt-open-in-simulator" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform-Specific Navigation
+      Problem: App doesn't open in simulator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-metro-bundler-connection-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Metro bundler connection issues
     </span>
   </a>
   
@@ -1794,46 +1881,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#development-build-problems" class="md-nav__link">
     <span class="md-ellipsis">
-      Best Practices
+      Development Build Problems
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Best Practices">
+    <nav class="md-nav" aria-label="Development Build Problems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-minimize-platform-specific-code" class="md-nav__link">
+  <a href="#problem-development-build-vs-expo-go-confusion" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Minimize Platform-Specific Code
+      Problem: Development build vs Expo Go confusion
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-use-platformselect-sparingly" class="md-nav__link">
+  <a href="#problem-build-artifacts-and-cache-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Use Platform.select Sparingly
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-test-on-both-platforms" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Test on Both Platforms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-follow-platform-guidelines" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Follow Platform Guidelines
+      Problem: Build artifacts and cache issues
     </span>
   </a>
   
@@ -1841,6 +1910,57 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-ios-development-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential iOS Development Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common File Locations
+    </span>
+  </a>
   
 </li>
       
@@ -1863,137 +1983,238 @@
   
 
 
-<h1 id="platform-specific-code">Platform-Specific Code<a class="headerlink" href="#platform-specific-code" title="Permanent link">&para;</a></h1>
-<p>Guide to handling iOS and Android differences in React Native applications.</p>
-<h2 id="platform-detection">Platform Detection<a class="headerlink" href="#platform-detection" title="Permanent link">&para;</a></h2>
-<h3 id="basic-platform-checks">Basic Platform Checks<a class="headerlink" href="#basic-platform-checks" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Platform</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-native&#39;</span><span class="p">;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// Simple platform check</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">OS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;ios&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="c1">// iOS-specific code</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">OS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;android&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="c1">// Android-specific code</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">// Platform-specific values</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">styles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nx">paddingTop</span><span class="o">:</span><span class="w"> </span><span class="kt">Platform.OS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;ios&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">20</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">});</span>
+<h1 id="ios-development-troubleshooting-guide">iOS Development Troubleshooting Guide<a class="headerlink" href="#ios-development-troubleshooting-guide" title="Permanent link">&para;</a></h1>
+<p>This guide covers common iOS development issues and their solutions for the rork-app project.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#cocoapods-issues">CocoaPods Issues</a></li>
+<li><a href="#ruby-environment-problems">Ruby Environment Problems</a></li>
+<li><a href="#xcode-build-errors">Xcode Build Errors</a></li>
+<li><a href="#simulator-issues">Simulator Issues</a></li>
+<li><a href="#development-build-problems">Development Build Problems</a></li>
+</ul>
+<h2 id="cocoapods-issues">CocoaPods Issues<a class="headerlink" href="#cocoapods-issues" title="Permanent link">&para;</a></h2>
+<h3 id="problem-pod-install-fails-with-rubynodejs-path-errors">Problem: <code>pod install</code> fails with Ruby/Node.js PATH errors<a class="headerlink" href="#problem-pod-install-fails-with-rubynodejs-path-errors" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- <code>sh: node: command not found</code>
+- <code>Invalid Podfile file: cannot load such file</code>
+- Ruby syntax errors in autolinking scripts</p>
+<p><strong>Solution:</strong>
+Use the correct Ruby environment with proper PATH setup:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/homebrew/opt/ruby/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.gem/ruby/3.4.0&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">cd</span><span class="w"> </span>ios<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pod<span class="w"> </span>install
 </code></pre></div>
-<h3 id="platform-specific-components">Platform-Specific Components<a class="headerlink" href="#platform-specific-components" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// components/PlatformButton.tsx</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PlatformButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Platform</span><span class="p">.</span><span class="nx">select</span><span class="p">({</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">ios</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./IOSButton&#39;</span><span class="p">).</span><span class="k">default</span><span class="p">,</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nx">android</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./AndroidButton&#39;</span><span class="p">).</span><span class="k">default</span><span class="p">,</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">})();</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">PlatformButton</span><span class="p">;</span>
+<p><strong>Alternative (from project root):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/homebrew/opt/ruby/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.gem/ruby/3.4.0&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ios&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pod<span class="w"> </span>install
+</code></pre></div></p>
+<p><strong>Why this works:</strong>
+- Sets up Homebrew Ruby instead of system Ruby
+- Configures proper gem paths for user installation
+- Ensures Node.js is available in PATH for Expo autolinking</p>
+<h3 id="problem-cocoapods-version-conflicts">Problem: CocoaPods version conflicts<a class="headerlink" href="#problem-cocoapods-version-conflicts" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- <code>pod install</code> hangs or fails
+- Version mismatch errors
+- Dependency resolution failures</p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Update CocoaPods</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>gem<span class="w"> </span>update<span class="w"> </span>cocoapods
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Clean and reinstall</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">cd</span><span class="w"> </span>ios
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>rm<span class="w"> </span>-rf<span class="w"> </span>Pods<span class="w"> </span>Podfile.lock
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>pod<span class="w"> </span>install<span class="w"> </span>--repo-update
+</code></pre></div></p>
+<h2 id="ruby-environment-problems">Ruby Environment Problems<a class="headerlink" href="#ruby-environment-problems" title="Permanent link">&para;</a></h2>
+<h3 id="problem-ruby-version-incompatibility">Problem: Ruby version incompatibility<a class="headerlink" href="#problem-ruby-version-incompatibility" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- Syntax errors with <code>&amp;.</code> operator
+- Heredoc syntax errors (<code>&lt;&lt;~</code>)
+- <code>unexpected '.'</code> errors</p>
+<p><strong>Solution:</strong>
+Install and use a newer Ruby version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Install rbenv (if not already installed)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>brew<span class="w"> </span>install<span class="w"> </span>rbenv
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Install Ruby 3.0+</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>rbenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.0.0
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>rbenv<span class="w"> </span>global<span class="w"> </span><span class="m">3</span>.0.0
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Restart terminal and verify</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>ruby<span class="w"> </span>--version
 </code></pre></div>
-<h2 id="file-based-platform-separation">File-Based Platform Separation<a class="headerlink" href="#file-based-platform-separation" title="Permanent link">&para;</a></h2>
-<h3 id="platform-specific-files">Platform-Specific Files<a class="headerlink" href="#platform-specific-files" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>components/
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Button.ios.tsx
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Button.android.tsx
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Button.tsx (fallback)
+<h3 id="problem-gem-permissions">Problem: Gem permissions<a class="headerlink" href="#problem-gem-permissions" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- Permission denied when installing gems
+- <code>sudo</code> required for gem installation</p>
+<p><strong>Solution:</strong>
+Use user-level gem installation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.gem/ruby/3.4.0&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Add to your shell profile (.zshrc, .bash_profile)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GEM_HOME=&quot;$HOME/.gem/ruby/3.4.0&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GEM_PATH=&quot;$GEM_HOME&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=&quot;$GEM_HOME/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Button.ios.tsx</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Button</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">onPress</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">Pressable</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">iosStyles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span><span class="w"> </span><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="nx">onPress</span><span class="p">}</span><span class="o">&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">Text</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">iosStyles</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/Pressable&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">);</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1">// Button.android.tsx</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Button</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">onPress</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">TouchableNativeFeedback</span><span class="w"> </span><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="nx">onPress</span><span class="p">}</span><span class="o">&gt;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">View</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">androidStyles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span><span class="o">&gt;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">Text</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">androidStyles</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/View&gt;</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/TouchableNativeFeedback&gt;</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="p">);</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+<h2 id="xcode-build-errors">Xcode Build Errors<a class="headerlink" href="#xcode-build-errors" title="Permanent link">&para;</a></h2>
+<h3 id="problem-swift-compilation-errors-in-expo-image">Problem: Swift compilation errors in expo-image<a class="headerlink" href="#problem-swift-compilation-errors-in-expo-image" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- <code>extra trailing closure passed in call</code>
+- <code>cannot convert value of type 'Bool'</code>
+- Generic parameter inference errors</p>
+<p><strong>Solution:</strong>
+Update expo-image to compatible version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bun<span class="w"> </span>add<span class="w"> </span>expo-image@~2.1.6
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>ios<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>Pods<span class="w"> </span>Podfile.lock<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pod<span class="w"> </span>install
 </code></pre></div>
-<h2 id="platform-specific-styling">Platform-Specific Styling<a class="headerlink" href="#platform-specific-styling" title="Permanent link">&para;</a></h2>
-<h3 id="conditional-styles">Conditional Styles<a class="headerlink" href="#conditional-styles" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">styles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">flex</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">...</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">select</span><span class="p">({</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="nx">ios</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#f8f9fa&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nx">shadowColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nx">shadowOffset</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nx">shadowOpacity</span><span class="o">:</span><span class="w"> </span><span class="kt">0.1</span><span class="p">,</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nx">shadowRadius</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="p">,</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="p">},</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="nx">android</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="nx">elevation</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="p">,</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">      </span><span class="p">},</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="p">}),</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="p">});</span>
+<h3 id="problem-missing-development-team-or-signing-issues">Problem: Missing development team or signing issues<a class="headerlink" href="#problem-missing-development-team-or-signing-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- Code signing errors
+- "No development team selected"
+- Provisioning profile errors</p>
+<p><strong>Solution:</strong>
+1. Open <code>ios/InstagramHybridApp.xcworkspace</code> in Xcode
+2. Select the project in navigator
+3. Go to "Signing &amp; Capabilities"
+4. Select your development team
+5. Enable "Automatically manage signing"</p>
+<h2 id="simulator-issues">Simulator Issues<a class="headerlink" href="#simulator-issues" title="Permanent link">&para;</a></h2>
+<h3 id="problem-app-doesnt-open-in-simulator">Problem: App doesn't open in simulator<a class="headerlink" href="#problem-app-doesnt-open-in-simulator" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- Build succeeds but app doesn't launch
+- URL scheme errors
+- <code>LSApplicationWorkspaceErrorDomain error 115</code></p>
+<p><strong>Solution:</strong>
+1. <strong>Reset simulator:</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>xcrun<span class="w"> </span>simctl<span class="w"> </span>erase<span class="w"> </span>all
+</code></pre></div></p>
+<ol>
+<li><strong>Manually open app:</strong></li>
+<li>Find the app in simulator</li>
+<li>
+<p>Tap to open manually</p>
+</li>
+<li>
+<p><strong>Check URL scheme:</strong></p>
+</li>
+<li>Verify <code>exp+instagram-hybrid-app://</code> is registered</li>
+<li>Try opening with development build instead of Expo Go</li>
+</ol>
+<h3 id="problem-metro-bundler-connection-issues">Problem: Metro bundler connection issues<a class="headerlink" href="#problem-metro-bundler-connection-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- "Unable to connect to Metro"
+- Network connection errors
+- Bundle loading failures</p>
+<p><strong>Solution:</strong>
+1. <strong>Check network connectivity:</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Verify Metro is running on correct port</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>lsof<span class="w"> </span>-i<span class="w"> </span>:8083
+</code></pre></div></p>
+<ol>
+<li>
+<p><strong>Reset Metro cache:</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>bunx<span class="w"> </span>expo<span class="w"> </span>start<span class="w"> </span>--clear
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Check firewall settings:</strong></p>
+</li>
+<li>Allow Metro/Expo through macOS firewall</li>
+<li>Ensure simulator and Mac are on same network</li>
+</ol>
+<h2 id="development-build-problems">Development Build Problems<a class="headerlink" href="#development-build-problems" title="Permanent link">&para;</a></h2>
+<h3 id="problem-development-build-vs-expo-go-confusion">Problem: Development build vs Expo Go confusion<a class="headerlink" href="#problem-development-build-vs-expo-go-confusion" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- QR code opens wrong app
+- Features not working in Expo Go
+- "expo-platform" header errors</p>
+<p><strong>Solution:</strong>
+1. <strong>Use development build (recommended):</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bunx<span class="w"> </span>expo<span class="w"> </span>run:ios<span class="w"> </span>--device
+</code></pre></div></p>
+<ol>
+<li><strong>Or use Expo Go with compatible setup:</strong></li>
+<li>Remove incompatible dependencies</li>
+<li>Use managed workflow only</li>
+</ol>
+<h3 id="problem-build-artifacts-and-cache-issues">Problem: Build artifacts and cache issues<a class="headerlink" href="#problem-build-artifacts-and-cache-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong>
+- Stale builds
+- Changes not reflected
+- Inconsistent behavior</p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Clean all caches</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>bunx<span class="w"> </span>expo<span class="w"> </span>start<span class="w"> </span>--clear
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">cd</span><span class="w"> </span>ios<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>xcodebuild<span class="w"> </span>clean
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>rm<span class="w"> </span>-rf<span class="w"> </span>ios/build<span class="w"> </span>ios/DerivedData
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># Rebuild</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>bunx<span class="w"> </span>expo<span class="w"> </span>run:ios<span class="w"> </span>--device
+</code></pre></div></p>
+<h2 id="quick-reference-commands">Quick Reference Commands<a class="headerlink" href="#quick-reference-commands" title="Permanent link">&para;</a></h2>
+<h3 id="essential-ios-development-commands">Essential iOS Development Commands<a class="headerlink" href="#essential-ios-development-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Full clean and rebuild (run from project root)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>ios/Pods<span class="w"> </span>ios/Podfile.lock
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>bun<span class="w"> </span>install
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/homebrew/opt/ruby/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.gem/ruby/3.4.0&quot;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">&quot;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">cd</span><span class="w"> </span>ios<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pod<span class="w"> </span>install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>bunx<span class="w"> </span>expo<span class="w"> </span>run:ios<span class="w"> </span>--device
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># Quick pod reinstall</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="nb">cd</span><span class="w"> </span>ios<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>Pods<span class="w"> </span>Podfile.lock<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pod<span class="w"> </span>install
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="c1"># Reset simulator</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>xcrun<span class="w"> </span>simctl<span class="w"> </span>erase<span class="w"> </span>all
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1"># Check running processes</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>lsof<span class="w"> </span>-i<span class="w"> </span>:8083<span class="w">  </span><span class="c1"># Metro bundler</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Simulator&quot;</span><span class="w">  </span><span class="c1"># iOS Simulator</span>
 </code></pre></div>
-<h3 id="safe-area-handling">Safe Area Handling<a class="headerlink" href="#safe-area-handling" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useSafeAreaInsets</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-native-safe-area-context&#39;</span><span class="p">;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Header</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">insets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSafeAreaInsets</span><span class="p">();</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">View</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="nx">paddingTop</span><span class="o">:</span><span class="w"> </span><span class="kt">Platform.OS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;ios&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">insets.top</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">Platform.OS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;ios&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">44</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">insets.top</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">56</span><span class="p">,</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">      </span><span class="p">}}</span><span class="o">&gt;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">Header</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/View&gt;</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="p">);</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">}</span>
+<h3 id="environment-setup-script">Environment Setup Script<a class="headerlink" href="#environment-setup-script" title="Permanent link">&para;</a></h3>
+<p>Create a script to set up the environment automatically:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># scripts/ios-setup.sh</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Set up Ruby environment for iOS development</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/homebrew/opt/ruby/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.gem/ruby/3.4.0&quot;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEM_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">&quot;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GEM_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ruby version: </span><span class="k">$(</span>ruby<span class="w"> </span>--version<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CocoaPods version: </span><span class="k">$(</span>pod<span class="w"> </span>--version<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Environment ready for iOS development&quot;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1"># Usage: source scripts/ios-setup.sh &amp;&amp; cd ios &amp;&amp; pod install</span>
 </code></pre></div>
-<h2 id="navigation-differences">Navigation Differences<a class="headerlink" href="#navigation-differences" title="Permanent link">&para;</a></h2>
-<h3 id="platform-specific-navigation">Platform-Specific Navigation<a class="headerlink" href="#platform-specific-navigation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// navigation/PlatformNavigator.tsx</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">Stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createNativeStackNavigator</span><span class="p">();</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kd">function</span><span class="w"> </span><span class="nx">PlatformNavigator</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Navigator</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">      </span><span class="nx">screenOptions</span><span class="o">=</span><span class="p">{{</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="p">...</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">select</span><span class="p">({</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">          </span><span class="nx">ios</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">            </span><span class="nx">headerStyle</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#f8f9fa&#39;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">            </span><span class="nx">headerTitleStyle</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="kt">17</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;600&#39;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">          </span><span class="p">},</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">          </span><span class="nx">android</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">            </span><span class="nx">headerStyle</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#2196f3&#39;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">            </span><span class="nx">headerTitleStyle</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="kt">20</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;500&#39;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">            </span><span class="nx">headerTintColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">          </span><span class="p">},</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="p">}),</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">      </span><span class="p">}}</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">      </span><span class="o">&gt;</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Home&quot;</span><span class="w"> </span><span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">HomeScreen</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/Stack.Navigator&gt;</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">  </span><span class="p">);</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="p">}</span>
-</code></pre></div>
-<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
-<h3 id="1-minimize-platform-specific-code">1. Minimize Platform-Specific Code<a class="headerlink" href="#1-minimize-platform-specific-code" title="Permanent link">&para;</a></h3>
-<p>Keep platform differences to a minimum and use shared components when possible.</p>
-<h3 id="2-use-platformselect-sparingly">2. Use Platform.select Sparingly<a class="headerlink" href="#2-use-platformselect-sparingly" title="Permanent link">&para;</a></h3>
-<p>Prefer file-based separation for complex platform differences.</p>
-<h3 id="3-test-on-both-platforms">3. Test on Both Platforms<a class="headerlink" href="#3-test-on-both-platforms" title="Permanent link">&para;</a></h3>
-<p>Always test platform-specific code on actual devices.</p>
-<h3 id="4-follow-platform-guidelines">4. Follow Platform Guidelines<a class="headerlink" href="#4-follow-platform-guidelines" title="Permanent link">&para;</a></h3>
-<p>Respect iOS Human Interface Guidelines and Android Material Design principles.</p>
-<hr />
-<p><strong>Pro Tip</strong>: Start with shared components and only add platform-specific code when necessary for user experience or platform compliance.</p>
+<h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
+<p>If you encounter issues not covered in this guide:</p>
+<ol>
+<li>Check the <a href="https://docs.expo.dev/">Expo documentation</a></li>
+<li>Review <a href="https://reactnative.dev/docs/environment-setup">React Native iOS setup</a></li>
+<li>Search <a href="https://forums.expo.dev/">Expo forums</a></li>
+<li>Check <a href="https://guides.cocoapods.org/using/troubleshooting">CocoaPods troubleshooting</a></li>
+</ol>
+<h2 id="common-file-locations">Common File Locations<a class="headerlink" href="#common-file-locations" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Xcode project:</strong> <code>ios/InstagramHybridApp.xcworkspace</code></li>
+<li><strong>Podfile:</strong> <code>ios/Podfile</code></li>
+<li><strong>Build logs:</strong> <code>.expo/xcodebuild.log</code></li>
+<li><strong>Simulator apps:</strong> <code>~/Library/Developer/CoreSimulator/</code></li>
+<li><strong>Xcode derived data:</strong> <code>~/Library/Developer/Xcode/DerivedData/</code></li>
+</ul>
 
 
 
