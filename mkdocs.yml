@@ -80,6 +80,7 @@ nav:
     - Styling Systems: ui/styling-systems.md
     - Design Systems: ui/design-systems.md
     - Responsive Design: ui/responsive-design.md
+    - Cross-Platform Design: ui/cross-platform-design.md
     - Animations: ui/animations.md
   - Native Integration:
     - Expo vs Pure RN: native/expo-vs-pure-rn.md

@@ -31,6 +31,84 @@
 .mermaid {
   text-align: center;
   margin: 2em 0;
+  background: transparent;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Light mode mermaid styling */
+[data-md-color-scheme="default"] .mermaid {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode mermaid styling */
+[data-md-color-scheme="slate"] .mermaid {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure mermaid text is readable in both themes */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  transition: none; /* Disable transitions to prevent flickering */
+}
+
+/* Use CSS filters for theme adaptation instead of re-rendering */
+[data-md-color-scheme="slate"] .mermaid svg {
+  filter: invert(0.9) hue-rotate(180deg) brightness(1.1) contrast(0.9);
+}
+
+[data-md-color-scheme="default"] .mermaid svg {
+  filter: none;
+}
+
+/* Alternative approach: CSS custom properties for theme colors */
+.mermaid {
+  --mermaid-text-color: #333333;
+  --mermaid-bg-color: #ffffff;
+  --mermaid-border-color: #cccccc;
+  --mermaid-line-color: #666666;
+}
+
+[data-md-color-scheme="slate"] .mermaid {
+  --mermaid-text-color: #e5e7eb;
+  --mermaid-bg-color: #1f2937;
+  --mermaid-border-color: #6b7280;
+  --mermaid-line-color: #9ca3af;
+}
+
+/* Fallback styling for better contrast */
+[data-md-color-scheme="slate"] .mermaid {
+  background: rgba(31, 41, 55, 0.3);
+  border-color: rgba(107, 114, 128, 0.3);
+}
+
+[data-md-color-scheme="default"] .mermaid {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive mermaid diagrams */
+@media screen and (max-width: 768px) {
+  .mermaid {
+    margin: 1em 0;
+    padding: 0.5rem;
+    font-size: 0.9em;
+  }
+}
+
+/* Mermaid loading state */
+.mermaid[data-processed="false"] {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.mermaid[data-processed="true"] {
+  opacity: 1;
 }
 
 /* Table responsiveness */
